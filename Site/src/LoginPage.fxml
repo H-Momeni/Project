@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="403.0" prefWidth="695.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="534.0" layoutY="131.0" text="Label" textFill="#250954" />
@@ -25,32 +24,32 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="61.0" layoutY="56.0" promptText="Username">
+            <TextField fx:id="txtusename" layoutX="61.0" layoutY="56.0" promptText="Username">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <TextField layoutX="61.0" layoutY="108.0" promptText="Password">
+            <TextField fx:id="textpassword" layoutX="61.0" layoutY="108.0" promptText="Password">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Button layoutX="147.0" layoutY="160.0" mnemonicParsing="false" style="-fx-background-color: #090956;" text="Forget password?" textFill="WHITE">
+            <Button fx:id="btnforgetpass" layoutX="147.0" layoutY="160.0" mnemonicParsing="false" onAction="#ClickbtnForgetpass" style="-fx-background-color: #090956;" text="Forget password?" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="160.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #090956;" text="Signup" textFill="WHITE">
+            <Button fx:id="btnsignup" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#ClickbtnSignup" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #090956;" text="Signup" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <CheckBox layoutX="91.0" layoutY="207.0" mnemonicParsing="false" text="I'm not robot!" textFill="WHITE">
+            <CheckBox fx:id="checkboxRobot" layoutX="91.0" layoutY="207.0" mnemonicParsing="false" onAction="#ClickCheckboxRobot" text="I'm not robot!" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Button layoutX="107.0" layoutY="252.0" mnemonicParsing="false" style="-fx-background-color: #090956;" text="Submit" textFill="WHITE">
+            <Button fx:id="btnSubmit" layoutX="107.0" layoutY="252.0" mnemonicParsing="false" onAction="#ClickbtnSubmit" style="-fx-background-color: #090956;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
