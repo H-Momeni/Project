@@ -30,14 +30,14 @@ public class DataBase {
 
     public static void AddUser(Person user, String number) {
         ConnectToDatabase();
-        long ID = user.getID();
+        String ID = user.getID();
         String Password = user.getPassword();
         String Firstname = user.getFirstName();
         String LastName = user.getLastName();
         String Username = user.getUsername();
         String Discipline = user.getDiscipline();
         String Email = user.getEmail();
-        long Phone = user.getPhone();
+        String Phone = user.getPhone();
         int role; // faculty=1  student=2
         if(user instanceof Faculty){
             role = 1;

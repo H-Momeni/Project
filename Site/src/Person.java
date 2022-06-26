@@ -1,25 +1,26 @@
 public abstract class Person {
 
-    private long ID; // student number
+    private String ID; // student number
     private String Password;
     private String FirstName;
     private String LastName;
     private String Username;
     private String Discipline;
     private String Email;
-    private long Phone;
+    private String Phone;
+    private String Confirmpass;
     // courses : arraylist
     // photo : file
 
-    public Person(long ID, String Password, String FirstName, String LastName) {
+    public Person(String ID, String Password, String FirstName, String LastName) {
         setID(ID);
         setPassword(Password);
         setFirstName(FirstName);
         setLastName(LastName);
     }
 
-    public Person(long ID, String Password, String FirstName, String LastName, String Username, String Discipline,
-            String Email, long Phone) {
+    public Person(String ID, String Password, String FirstName, String LastName, String Username, String Discipline,
+            String Email, String Phone) {
         this(ID, Password, FirstName, LastName);
         setUsername(Username);
         setDiscipline(Discipline);
@@ -27,7 +28,11 @@ public abstract class Person {
         setPhone(Phone);
     }
 
-    public void setID(long ID) {
+    public Person() {
+
+    }
+
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -55,11 +60,15 @@ public abstract class Person {
         this.Email = Email;
     }
 
-    public void setPhone(long Phone) {
-        this.Phone = Phone;
+    public void setPhone(String phone) {
+        this.Phone = phone;
     }
 
-    public long getID() {
+    public void setConfirmpass(String confirmpass) {
+        Confirmpass = confirmpass;
+    }
+
+    public String getID() {
         return ID;
     }
 
@@ -87,8 +96,12 @@ public abstract class Person {
         return Email;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return Phone;
+    }
+
+    public String getConfirmpass() {
+        return Confirmpass;
     }
 
 }

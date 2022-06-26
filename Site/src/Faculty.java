@@ -1,12 +1,16 @@
 public class Faculty extends Person {
     
-    public Faculty(long ID, String Password, String FirstName, String LastName) {
+    public Faculty(String ID, String Password, String FirstName, String LastName) {
         super(ID, Password, FirstName, LastName);
     }
 
-    public Faculty(long ID, String Password, String FirstName, String LastName, String Username, String Discipline,
-            String Email, long Phone) {
+    public Faculty(String ID, String Password, String FirstName, String LastName, String Username, String Discipline,
+            String Email, String Phone) {
         super(ID, Password, FirstName, LastName, Username, Discipline, Email, Phone);
+    }
+
+    public Faculty(){
+
     }
 
 }
