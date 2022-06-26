@@ -14,28 +14,24 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
-
 public class App extends Application {
 
-     @Override
-    public void start(Stage primaryStage) {
+    public static Scene scene;
+    public static Stage stage;
 
-        Parent root;
-        try {
-           
-          
-            root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setResizable(false);
-            primaryStage.setTitle("Welcome");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-
-        }
-
+    @Override
+    public void start(Stage ignore) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+        stage = new Stage();
+        scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
+
+    
 
     public static void main(String[] args) {
         launch(args);
