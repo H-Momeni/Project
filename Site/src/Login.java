@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -55,8 +54,13 @@ public class Login {
             alert.setContentText("Compelete all the parts!!");
             alert.showAndWait();
         } else {
-            //check user va pass ke dar database hastand
-            //bordan be safhe ye home page
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Successfully Registered!!");
+            alert.showAndWait();
+            // check user va pass ke dar database hastand
+            // bordan be safhe ye home page
         }
     }
 
