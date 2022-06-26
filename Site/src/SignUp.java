@@ -132,17 +132,16 @@ public class SignUp {
 
     @FXML
     void ClickbtnVerify(ActionEvent event) throws IOException {
-        /*
-         * Stage stage = (Stage) btnVerify.getScene().getWindow();
-         * stage.close();
-         * Stage primaryStage = new Stage();
-         * GridPane root = (GridPane)
-         * FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-         * Scene scene = new Scene(root, 900, 530);
-         * primaryStage.setScene(scene);
-         * primaryStage.show();
-         */
-
+        Stage pstage =(Stage) btnVerify.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

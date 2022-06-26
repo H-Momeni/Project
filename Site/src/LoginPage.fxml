@@ -39,7 +39,7 @@
                   <Font name="System Italic" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnsignup" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #090956;" text="Signup" textFill="WHITE">
+            <Button fx:id="btnsignup" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#clickSignupbtn" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #090956;" text="Signup" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Button fx:id="btnSubmit" layoutX="107.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#Clicksubmitbtn" style="-fx-background-color: #090956;" text="Submit" textFill="WHITE">
+            <Button fx:id="btnSubmit" layoutX="107.0" layoutY="252.0" mnemonicParsing="false" onAction="#clicksubmitbtn" style="-fx-background-color: #090956;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
