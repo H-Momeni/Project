@@ -81,7 +81,7 @@ public class SignUp {
     void clickprofbtn(ActionEvent event) {
         ImageView iv = new ImageView();
         GridPane gridpane;
-        
+
         Stage primaryStage = (Stage) addprofile.getScene().getWindow();
         try {
             // FileChooser
@@ -102,11 +102,11 @@ public class SignUp {
                 }
             });
             final StackPane stac = new StackPane();
-          // stac.getChildren().add(addprofile);
+            // stac.getChildren().add(addprofile);
             stac.getChildren().add(iv); // Add ImageView
 
-             Scene scene = new Scene(stac, 160, 800);
-             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            Scene scene = new Scene(stac, 160, 800);
+            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
 
