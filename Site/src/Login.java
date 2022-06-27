@@ -6,11 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Login {
+    static String name;
 
     @FXML
     private Button btnSubmit;
@@ -22,7 +24,7 @@ public class Login {
     private Button btnsignup;
 
     @FXML
-    private TextField textpassword;
+    private PasswordField textpassword;
 
     @FXML
     private TextField txtusename;
@@ -36,7 +38,6 @@ public class Login {
         pstage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpPage.fxml"));
         Stage stage = new Stage();
-        System.out.println(stage);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");
         stage.setAlwaysOnTop(true);
@@ -47,7 +48,6 @@ public class Login {
 
     @FXML
     void clicksubmitbtn(ActionEvent event) throws IOException {
-
         if (radioRobot.isSelected() == false || txtusename.getText().compareTo("") == 0
                 || textpassword.getText().compareTo("") == 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -55,12 +55,25 @@ public class Login {
             alert.setHeaderText(null);
             alert.setContentText("Compelete all the parts!!");
             alert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+        } else if (!DataBase.IDisVlaid(txtusename.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Successfully Registered!!");
+            alert.setContentText("Education ID not found!!");
             alert.showAndWait();
+
+        } else if (!DataBase.PasswordisValid(txtusename.getText(), textpassword.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Incorrect password!!");
+            alert.showAndWait();
+        } else {
+            
+            Person curPerson = DataBase.FindUser(txtusename.getText());
+            name = curPerson.getUsername();
+            // System.out.println(curPerson.getFirstName());
+            // System.out.println(curPerson.getLastName());
 
             Stage pstage = (Stage) btnSubmit.getScene().getWindow();
             pstage.close();
@@ -72,9 +85,12 @@ public class Login {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
-            // check user va pass ke dar database hastand
-           
+
         }
+    }
+
+    public static String getname() {
+        return name;
     }
 
 }

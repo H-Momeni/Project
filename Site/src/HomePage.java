@@ -19,10 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class HomePage {
-    private volatile boolean stop = false;
-    private int minute;
-    private int hour;
-    private int second;
+   
 
     @FXML
     private Text time;
@@ -50,6 +47,7 @@ public class HomePage {
             @Override
             public void handle(long now) {
                 time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                lblName.setText(Login.getname());
             }
         };
         timer.start();
