@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,11 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
+import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class SignUp {
+    @FXML
+    private Button addprofile;
 
     @FXML
     private Button btnDone;
@@ -73,6 +78,44 @@ public class SignUp {
     }
 
     @FXML
+    void clickprofbtn(ActionEvent event) {
+        ImageView iv = new ImageView();
+        GridPane gridpane;
+        
+        Stage primaryStage = (Stage) addprofile.getScene().getWindow();
+        try {
+            // FileChooser
+            final FileChooser fileChooser = new FileChooser();
+
+            addprofile.setOnAction(e -> {
+                File selectedFile = fileChooser.showOpenDialog(primaryStage);
+                if (selectedFile != null) {
+                    final InputStream targetStream;
+                    try {
+                        targetStream = new DataInputStream(new FileInputStream(selectedFile));
+                        Image image = new Image(targetStream);
+                        iv.setImage(image); // Set Image
+
+                    } catch (FileNotFoundException fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                }
+            });
+            final StackPane stac = new StackPane();
+          // stac.getChildren().add(addprofile);
+            stac.getChildren().add(iv); // Add ImageView
+
+             Scene scene = new Scene(stac, 160, 800);
+             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void clickbtnDone(ActionEvent event) {
         if (txtFirstname.getText().compareTo("") == 0 || txtlastname.getText().compareTo("") == 0
                 || txtUsername.getText().compareTo("") == 0 || textID.getText().compareTo("") == 0
@@ -123,17 +166,16 @@ public class SignUp {
 
     @FXML
     void ClickbtnVerify(ActionEvent event) throws IOException {
-        /*
-         * Stage stage = (Stage) btnVerify.getScene().getWindow();
-         * stage.close();
-         * Stage primaryStage = new Stage();
-         * GridPane root = (GridPane)
-         * FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-         * Scene scene = new Scene(root, 900, 530);
-         * primaryStage.setScene(scene);
-         * primaryStage.show();
-         */
-
+        Stage pstage = (Stage) btnVerify.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
