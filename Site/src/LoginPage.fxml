@@ -24,7 +24,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtusename" layoutX="61.0" layoutY="56.0" promptText="Username">
+            <TextField fx:id="txtusename" layoutX="61.0" layoutY="56.0" promptText="Education ID">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

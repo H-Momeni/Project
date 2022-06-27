@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="478.0" prefWidth="717.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="Timelable" layoutX="20.0" layoutY="21.0" onDragDetected="#Time" prefHeight="36.0" prefWidth="70.0" text="Time" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnEdit" layoutX="618.0" layoutY="26.0" mnemonicParsing="false" onAction="#clckbtnEdit" prefHeight="36.0" prefWidth="85.0" text="Edit Profile" />
+      <Button fx:id="btnMassnger" layoutX="500.0" layoutY="26.0" mnemonicParsing="false" onAction="#clickbtnMassanger" prefHeight="36.0" prefWidth="85.0" text="Massanger" />
+
+   </children>
+</AnchorPane>

@@ -102,7 +102,7 @@ public class SignUp {
                 }
             });
             final StackPane stac = new StackPane();
-            // stac.getChildren().add(addprofile);
+            //stac.getChildren().add(addprofile);
             stac.getChildren().add(iv); // Add ImageView
 
             Scene scene = new Scene(stac, 160, 800);
