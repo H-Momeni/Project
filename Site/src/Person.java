@@ -8,7 +8,6 @@ public abstract class Person {
     private String Discipline;
     private String Email;
     private String Phone;
-    private String Confirmpass;
     // courses : arraylist
     // photo : file
 
@@ -64,10 +63,6 @@ public abstract class Person {
         this.Phone = phone;
     }
 
-    public void setConfirmpass(String confirmpass) {
-        Confirmpass = confirmpass;
-    }
-
     public String getID() {
         return ID;
     }
@@ -98,10 +93,6 @@ public abstract class Person {
 
     public String getPhone() {
         return Phone;
-    }
-
-    public String getConfirmpass() {
-        return Confirmpass;
     }
 
 }

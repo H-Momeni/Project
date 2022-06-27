@@ -78,27 +78,26 @@ public class SignUp {
                 || txtUsername.getText().compareTo("") == 0 || textID.getText().compareTo("") == 0
                 || txtMobilePhone.getText().compareTo("") == 0 || txtMajor.getText().compareTo("") == 0
                 || txtPassword.getText().compareTo("") == 0 || txtEmail.getText().compareTo("") == 0
-                || txtConfirmpass.getText().compareTo("") == 0 || radioFaculty.isSelected() == false
-                        && radioStudent.isSelected() == false) {
+                || txtConfirmpass.getText().compareTo("") == 0 || (radioFaculty.isSelected() == false
+                        && radioStudent.isSelected() == false)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Compelete all the parts!!");
             alert.showAndWait();
+        } else if(!txtPassword.getText().equals(txtConfirmpass.getText())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Enter password again!!");
+            alert.showAndWait();
         } else {
             if (radioFaculty.isSelected() == true) {
-                Faculty teacher = new Faculty();
-                teacher.setFirstName(txtFirstname.getText());
-                teacher.setLastName(txtlastname.getText());
-                teacher.setUsername(txtUsername.getText());
-                teacher.setDiscipline(txtMajor.getText());
-                teacher.setID(textID.getText());
-                teacher.setEmail(txtEmail.getText());
-                teacher.setPhone(txtMobilePhone.getText());
-                teacher.setPassword(txtPassword.getText());
-                teacher.setConfirmpass(txtConfirmpass.getText());
+                Faculty teacher = new Faculty(textID.getText(), txtPassword.getText(), txtFirstname.getText(), 
+                txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(), txtMobilePhone.getText());
+  
 
-                // etesal be data base
+                DataBase.AddUser(teacher);
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Information Dialog");
@@ -107,18 +106,10 @@ public class SignUp {
                 alert2.showAndWait();
             }
             if (radioStudent.isSelected() == true) {
-                Student student = new Student();
-                student.setFirstName(txtFirstname.getText());
-                student.setLastName(txtlastname.getText());
-                student.setUsername(txtUsername.getText());
-                student.setDiscipline(txtMajor.getText());
-                student.setID(textID.getText());
-                student.setEmail(txtEmail.getText());
-                student.setPhone(txtMobilePhone.getText());
-                student.setPassword(txtPassword.getText());
-                student.setConfirmpass(txtConfirmpass.getText());
+                Student student = new Student(textID.getText(), txtPassword.getText(), txtFirstname.getText(), 
+                txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(), txtMobilePhone.getText());
 
-                // etesal be data base
+                DataBase.AddUser(student);
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Information Dialog");
