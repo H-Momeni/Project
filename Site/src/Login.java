@@ -53,14 +53,22 @@ public class Login {
             alert.setHeaderText(null);
             alert.setContentText("Compelete all the parts!!");
             alert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+        } else if(!DataBase.IDisVlaid(txtusename.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Successfully Registered!!");
+            alert.setContentText("Education ID not found!!");
             alert.showAndWait();
-            // check user va pass ke dar database hastand
-            // bordan be safhe ye home page
+        } else if(!DataBase.PasswordisValid(txtusename.getText(), textpassword.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Incorrect password!!");
+            alert.showAndWait();
+        } else {
+            Person curPerson = DataBase.FindUser(txtusename.getText());
+            // System.out.println(curPerson.getFirstName());
+            // System.out.println(curPerson.getLastName());
         }
     }
 
