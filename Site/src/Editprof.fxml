@@ -37,7 +37,7 @@
                   <Font name="System Italic" size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtEmail" layoutX="10.0" layoutY="256.0" promptText="Emai">
+            <TextField fx:id="txtEmail" layoutX="10.0" layoutY="256.0" promptText="Email">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>

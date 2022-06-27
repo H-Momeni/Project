@@ -62,6 +62,11 @@ public class DataBase {
 
     }
 
+    public void updatefirstname(){
+        
+    }
+
+
     public static Person FindUser(String ID) { 
         ConnectToDatabase();
         CreateTable("users");

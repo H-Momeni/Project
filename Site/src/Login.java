@@ -66,7 +66,6 @@ public class Login {
             pstage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
             Stage stage = new Stage();
-            System.out.println(stage);
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Welcome");
             stage.setAlwaysOnTop(true);
