@@ -6,7 +6,6 @@ public class DataBase {
 
     public DataBase() {
         ConnectToDatabase();
-        CreateTable();
     }
 
     private static void ConnectToDatabase() {
@@ -19,8 +18,9 @@ public class DataBase {
         }
     }
 
-    private static void CreateTable() {
-        String tablecrtquery = "CREATE TABLE IF NOT EXISTS users (id VARCHAR(255) PRIMARY KEY NOT NULL, password VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, username VARCHAR(255), discipline VARCHAR(255), email VARCHAR(255), phonenumber VARCHAR(255), role TINYINT);";
+    private static void CreateTable(String tablename) {
+        String tablecrtquery = "CREATE TABLE IF NOT EXISTS '%s' (id VARCHAR(255) PRIMARY KEY NOT NULL, password VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, username VARCHAR(255), discipline VARCHAR(255), email VARCHAR(255), phonenumber VARCHAR(255), role TINYINT);";
+        tablecrtquery = String.format(tablecrtquery, tablename);
         try {
             statement.executeUpdate(tablecrtquery);
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class DataBase {
 
     public static void AddUser(Person user) {
         ConnectToDatabase();
-        CreateTable();
+        CreateTable("users");
         String ID = user.getID();
         String Password = user.getPassword();
         String Firstname = user.getFirstName();
@@ -51,12 +51,37 @@ public class DataBase {
 
         try {
             statement.executeUpdate(insertquery);
-            System.out.println("inserted person"); //بعدا بردارم
+            statement.close();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "person");
             e.printStackTrace();
         }
+        
+
 
     }
 
+    public static Person FindUser(String ID) { 
+        ConnectToDatabase();
+        CreateTable("users");
+        String findquery = "SELECT * FROM users WHERE id='%s';";
+        findquery = String.format(findquery, ID);
+        Person curperson = null;
+        try {
+            ResultSet result = statement.executeQuery(findquery);
+            if(result.getString("role").equals("1")) {
+                curperson = new Faculty(ID, result.getString("password"), result.getString("firstname"), 
+                result.getString("lastname"), result.getString("username"), result.getString("discipline"), 
+                result.getString("email"), result.getString("phonenumber"));
+            } else {
+                curperson = new Student(ID, result.getString("password"), result.getString("firstname"), 
+                result.getString("lastname"), result.getString("username"), result.getString("discipline"), 
+                result.getString("email"), result.getString("phonenumber"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return curperson;
+    }
 }
