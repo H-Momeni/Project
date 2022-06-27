@@ -46,7 +46,8 @@ public class Login {
     }
 
     @FXML
-    void clicksubmitbtn(ActionEvent event) {
+    void clicksubmitbtn(ActionEvent event) throws IOException {
+
         if (radioRobot.isSelected() == false || txtusename.getText().compareTo("") == 0
                 || textpassword.getText().compareTo("") == 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -60,8 +61,20 @@ public class Login {
             alert.setHeaderText(null);
             alert.setContentText("Successfully Registered!!");
             alert.showAndWait();
+
+            Stage pstage = (Stage) btnSubmit.getScene().getWindow();
+            pstage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
+            Stage stage = new Stage();
+            System.out.println(stage);
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Welcome");
+            stage.setAlwaysOnTop(true);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
             // check user va pass ke dar database hastand
-            // bordan be safhe ye home page
+           
         }
     }
 
