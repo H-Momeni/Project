@@ -275,4 +275,27 @@ public class DataBase {
             }
         }
     }
+
+    public static void EditUser(Person user) {
+        ConnectToDatabase();
+        CreateTable_users();
+        String ID = user.getID();
+        String Password = user.getPassword();
+        String Firstname = user.getFirstName();
+        String LastName = user.getLastName();
+        String Username = user.getUsername();
+        String Discipline = user.getDiscipline();
+        String Email = user.getEmail();
+        String Phone = user.getPhone();
+        String editquery = "UPDATE users SET password = '%s', firstname = '%s', lastname = '%s', username = '%s', discipline = '%s', email = '%s', phonenumber = '%s' WHERE id = '%s';";
+        editquery = String.format(editquery, Password, Firstname, LastName, Username, Discipline, Email, Phone, ID);
+        try {
+            statement.executeUpdate(editquery);
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "person");
+            e.printStackTrace();
+        }
+    }
 }
