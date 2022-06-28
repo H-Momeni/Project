@@ -72,8 +72,6 @@ public class Login {
             
             Person curPerson = DataBase.FindUser(txtusename.getText());
             name = curPerson.getUsername();
-            // System.out.println(curPerson.getFirstName());
-            // System.out.println(curPerson.getLastName());
 
             Stage pstage = (Stage) btnSubmit.getScene().getWindow();
             pstage.close();
