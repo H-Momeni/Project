@@ -47,7 +47,6 @@ public class HomePage {
             @Override
             public void handle(long now) {
                 time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                lblName.setText(Login.getname());
             }
         };
         timer.start();

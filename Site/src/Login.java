@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Login {
-    static String name;
+    private static Person curperson;
 
     @FXML
     private Button btnSubmit;
@@ -70,8 +70,7 @@ public class Login {
             alert.showAndWait();
         } else {
             
-            Person curPerson = DataBase.FindUser(txtusename.getText());
-            name = curPerson.getUsername();
+            curperson = DataBase.FindUser(txtusename.getText());
 
             Stage pstage = (Stage) btnSubmit.getScene().getWindow();
             pstage.close();
@@ -87,8 +86,8 @@ public class Login {
         }
     }
 
-    public static String getname() {
-        return name;
+    public static Person getCurperson() {
+        return curperson;
     }
 
 }
