@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class Exam extends CourseObject {
     private String quspath;
     private String anspath;
@@ -23,6 +25,11 @@ public class Exam extends CourseObject {
     }
     public void setReview(boolean review){
         this.review = review;
+    }
+    private void setStartTime() {
+        LocalDateTime now = LocalDateTime.now();
+        Time time = new Time(now.getYear(), now.getMonthValue(), now.getDayOfMonth(), now.getHour(), now.getMinute(), now.getSecond());
+        this.startTime = time;
     }
 
     public String getQuspath(){
@@ -52,7 +59,7 @@ public class Exam extends CourseObject {
         super(title);
         setQuspath(quspath);
         setState(false);
-        // this.startTime = startTime;
+        setStartTime();
         setEndTime(endTime);
         setReview(review);
     }

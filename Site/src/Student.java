@@ -9,8 +9,4 @@ public class Student extends Person {
         super(ID, Password, FirstName, LastName, Username, Discipline, Email, Phone);
     }
 
-    public Student() {
-
-    }
-
 }

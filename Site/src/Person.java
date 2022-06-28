@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Person {
 
     private String ID; // student number
@@ -8,7 +10,7 @@ public abstract class Person {
     private String Discipline;
     private String Email;
     private String Phone;
-    // courses : arraylist
+    public ArrayList<Course> courses = new ArrayList<Course>();
     // photo : file
 
     public Person(String ID, String Password, String FirstName, String LastName) {
@@ -25,10 +27,6 @@ public abstract class Person {
         setDiscipline(Discipline);
         setEmail(Email);
         setPhone(Phone);
-    }
-
-    public Person() {
-
     }
 
     public void setID(String ID) {
