@@ -59,7 +59,9 @@ public class DataBase {
 
     }
 
+
     public static Person FindUser(String ID) {
+
         ConnectToDatabase();
         CreateTable("users");
         String findquery = "SELECT * FROM users WHERE id= '%s';";
