@@ -14,9 +14,14 @@ public class Course {
     public int getCode() {
         return code;
     }
+
     public Course(String title) {
         setTitle(title);
         code = codes;
         codes++;
+    }
+    public Course(String title, int code) {
+        setTitle(title);
+        this.code = code;
     }
 }
