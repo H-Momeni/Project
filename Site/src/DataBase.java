@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DataBase {
     private static Connection connection;
@@ -88,7 +89,6 @@ public class DataBase {
         try {
             ResultSet result = statement.executeQuery(findquery);
             result.next();
-            // course array ro dorost konam
             if (result.getString("role").equals("1")) {
                 curperson = new Faculty(ID, result.getString("password"), result.getString("firstname"),
                         result.getString("lastname"), result.getString("username"), result.getString("discipline"),
@@ -98,6 +98,7 @@ public class DataBase {
                         result.getString("lastname"), result.getString("username"), result.getString("discipline"),
                         result.getString("email"), result.getString("phonenumber"));
             }
+            curperson.courses = FindCourses(curperson.getID());
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -297,5 +298,23 @@ public class DataBase {
             System.out.println(e.getMessage() + "person");
             e.printStackTrace();
         }
+    }
+
+    private static ArrayList<Course> FindCourses(String ID) {
+        CreateTable_studentID(ID);
+        String findquery = "SELECT * FROM '%s';";
+        findquery = String.format(findquery, ID);
+        ArrayList<Course> output = new ArrayList<>();
+        Course curcourse = null;
+        try {
+            ResultSet result = statement.executeQuery(findquery);
+            while (result.next()) {
+                curcourse = new Course(result.getString("title"), result.getInt("code"));
+                output.add(curcourse);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 }

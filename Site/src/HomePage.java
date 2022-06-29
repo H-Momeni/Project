@@ -1,13 +1,7 @@
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,8 +23,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class HomePage {
+
     @FXML
     private Hyperlink Hypercourse;
+
 
     @FXML
     private Text time;
@@ -53,10 +49,12 @@ public class HomePage {
             @Override
             public void handle(long now) {
                 time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
                 lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
 
             }
         };
+        lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
         timer.start();
     }
 
