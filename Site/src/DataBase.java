@@ -29,8 +29,8 @@ public class DataBase {
     }
 
     private static void CreateTable_studentID(String ID) {
-        String tablecrtquery = "CREATE TABLE IF NOT EXISTS '%s' (title VARCHAR(255) NOT NULL, code INTEGER(11) NOT NULL);";
-        tablecrtquery = String.format(tablecrtquery, ID);
+        String name = "s" + ID;
+        String tablecrtquery = "CREATE TABLE IF NOT EXISTS "+ name + " (title VARCHAR(255) NOT NULL, code INTEGER(11) NOT NULL);";
         try {
             statement.executeUpdate(tablecrtquery);
         } catch (SQLException e) {
@@ -302,8 +302,8 @@ public class DataBase {
 
     private static ArrayList<Course> FindCourses(String ID) {
         CreateTable_studentID(ID);
-        String findquery = "SELECT * FROM '%s';";
-        findquery = String.format(findquery, ID);
+        String name = "s" + ID;
+        String findquery = "SELECT * FROM " + name + " ;";
         ArrayList<Course> output = new ArrayList<>();
         Course curcourse = null;
         try {
