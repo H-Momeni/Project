@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 public class HomePage {
 
+    private static Course curcourse;
+    private static Button[] coursebuttons = new Button[16];
+
     @FXML
     private Button button1;
 
@@ -89,7 +92,6 @@ public class HomePage {
             }
         };
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
-        Button[] coursebuttons = new Button[16];
         coursebuttons[0] = button1;
         coursebuttons[1] = button2;
         coursebuttons[2] = button3;
@@ -149,15 +151,16 @@ public class HomePage {
 
     @FXML
     void coursebtnclk(ActionEvent event) throws IOException {
+        Button b =  (Button) event.getSource();
+        setCurcourse(b);
         Stage pstage = (Stage) btnback.getScene().getWindow();
         pstage.close();
         FXMLLoader fxmlLoader;
-        /* if(Login.getCurperson() instanceof Student) {
+        if(Login.getCurperson() instanceof Student) {
             fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
         } else {
             fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
-        } */
-        fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
+        }
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");
@@ -165,6 +168,21 @@ public class HomePage {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    private static void setCurcourse(Button button) {
+        for(int i=0; i<Login.getCurperson().courses.size(); i++) {
+            if(button.getText().equals(coursebuttons[i].getText())) {
+                curcourse = Login.getCurperson().courses.get(i);
+                break;
+            }
+        }
+    } 
+
+
+    public static Course getCurcourse() {
+        return curcourse;
     }
 
 }

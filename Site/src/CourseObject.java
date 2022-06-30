@@ -30,6 +30,13 @@ class Time {
                         Integer.toString(time.second);
         return output;
     }
+    public static Time stringtotime(String string) {
+        String[] parts = string.split("/");
+        Time output = new Time(Integer.valueOf(parts[0]), Integer.valueOf(parts[1]), Integer.valueOf(parts[2]),
+                                Integer.valueOf(parts[3]), Integer.valueOf(parts[4]),
+                                Integer.valueOf(parts[5]));
+        return output;
+    }
     public Time(int year, int month, int day, int hour, int minute, int second){
         this.year = year;
         this.month = month;

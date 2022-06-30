@@ -86,6 +86,7 @@ public class Login {
         }
     }
 
+    
     public static Person getCurperson() {
         return curperson;
     }

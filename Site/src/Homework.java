@@ -55,4 +55,15 @@ public class Homework extends CourseObject {
         setStartTime();
         setEndTime(endTime);
     }
+
+    public Homework(String title, String quspath, String anspath, boolean state, Time startTime, Time endTime, double grade) {
+        super(title);
+        setQuspath(quspath);
+        setAnspath(anspath);
+        setState(state);
+        this.startTime = startTime;
+        setEndTime(endTime);
+        setGrade(grade);
+    }
+
 }

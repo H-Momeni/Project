@@ -63,4 +63,16 @@ public class Exam extends CourseObject {
         setEndTime(endTime);
         setReview(review);
     }
+
+    public Exam(String title, String quspath, String anspath, boolean state, Time startTime, Time endTime, double grade, boolean review) {
+        super(title);
+        setQuspath(quspath);
+        setAnspath(anspath);
+        setState(state);
+        this.startTime = startTime;
+        setEndTime(endTime);
+        setGrade(grade);
+        setReview(review);
+    }
+
 }
