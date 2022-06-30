@@ -115,6 +115,7 @@ public class HomePage {
         coursebuttons[13] = button14;
         coursebuttons[14] = button15;
         coursebuttons[15] = button16;
+        //inja bayad ye if nevesht ke age ostad bood corsepage fa dar gheir in sorat stage corsrpage run she az tarigh button course
         for(int i = 0; i< 6; i++) {
             coursebuttons[i].setVisible(true);
             //coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
