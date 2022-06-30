@@ -17,6 +17,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class SignUp {
+    final FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    private ImageView iv;
+
     @FXML
     private Button addprofile;
 
@@ -79,40 +84,22 @@ public class SignUp {
 
     @FXML
     void clickprofbtn(ActionEvent event) {
-        ImageView iv = new ImageView();
-        GridPane gridpane;
+       
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
 
-        Stage primaryStage = (Stage) addprofile.getScene().getWindow();
-        try {
-            // FileChooser
-            final FileChooser fileChooser = new FileChooser();
+            final InputStream targetStream;
+            try {
+                targetStream = new DataInputStream(new FileInputStream(selectedFile));
+                Image image = new Image(targetStream);
+                iv.setImage(image);
+                iv.setVisible(true);
+               // addprofile.setVisible(false);
 
-            addprofile.setOnAction(e -> {
-                File selectedFile = fileChooser.showOpenDialog(primaryStage);
-                if (selectedFile != null) {
-                    final InputStream targetStream;
-                    try {
-                        targetStream = new DataInputStream(new FileInputStream(selectedFile));
-                        System.out.println(String.valueOf(targetStream));
-                        Image image = new Image(targetStream);
-                        iv.setImage(image); // Set Image
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            }
 
-                    } catch (FileNotFoundException fileNotFoundException) {
-                        fileNotFoundException.printStackTrace();
-                    }
-                }
-            });
-            final StackPane stac = new StackPane();
-            //stac.getChildren().add(addprofile);
-            stac.getChildren().add(iv); // Add ImageView
-
-            Scene scene = new Scene(stac, 160, 800);
-            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -129,7 +116,7 @@ public class SignUp {
             alert.setHeaderText(null);
             alert.setContentText("Compelete all the parts!!");
             alert.showAndWait();
-        } else if(!txtPassword.getText().equals(txtConfirmpass.getText())){
+        } else if (!txtPassword.getText().equals(txtConfirmpass.getText())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning Dialog");
             alert.setHeaderText(null);
@@ -137,9 +124,9 @@ public class SignUp {
             alert.showAndWait();
         } else {
             if (radioFaculty.isSelected() == true) {
-                Faculty teacher = new Faculty(textID.getText(), txtPassword.getText(), txtFirstname.getText(), 
-                txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(), txtMobilePhone.getText());
-  
+                Faculty teacher = new Faculty(textID.getText(), txtPassword.getText(), txtFirstname.getText(),
+                        txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(),
+                        txtMobilePhone.getText());
 
                 DataBase.AddUser(teacher);
 
@@ -150,8 +137,9 @@ public class SignUp {
                 alert2.showAndWait();
             }
             if (radioStudent.isSelected() == true) {
-                Student student = new Student(textID.getText(), txtPassword.getText(), txtFirstname.getText(), 
-                txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(), txtMobilePhone.getText());
+                Student student = new Student(textID.getText(), txtPassword.getText(), txtFirstname.getText(),
+                        txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(),
+                        txtMobilePhone.getText());
 
                 DataBase.AddUser(student);
 
