@@ -5,18 +5,9 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -115,10 +106,9 @@ public class HomePage {
         coursebuttons[13] = button14;
         coursebuttons[14] = button15;
         coursebuttons[15] = button16;
-        //inja bayad ye if nevesht ke age ostad bood corsepage fa dar gheir in sorat stage corsrpage run she az tarigh button course
-        for(int i = 0; i< 6; i++) {
+        for(int i = 0; i< Login.getCurperson().courses.size(); i++) {
             coursebuttons[i].setVisible(true);
-            //coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
+            coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
         }
         timer.start();
     }
@@ -158,8 +148,23 @@ public class HomePage {
     }
 
     @FXML
-    void coursebtnclk(ActionEvent event) {
-
+    void coursebtnclk(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) btnback.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader;
+        /* if(Login.getCurperson() instanceof Student) {
+            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
+        } */
+        fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
