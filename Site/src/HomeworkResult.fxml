@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="348.0" prefWidth="472.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnback" layoutX="365.0" layoutY="21.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <Label layoutX="26.0" layoutY="22.0" prefHeight="36.0" prefWidth="296.0" text="Show results" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="382.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back.jpg" />
+         </image>
+      </ImageView>
+      <Separator layoutX="26.0" layoutY="85.0" prefHeight="6.0" prefWidth="418.0" />
+      <Label layoutX="26.0" layoutY="119.0" prefHeight="27.0" prefWidth="433.0" text="Enter students' names to download homeworks" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="26.0" layoutY="162.0" promptText="EducationID" />
+      <TextField layoutX="27.0" layoutY="216.0" promptText="Lastname" />
+      <Button layoutX="186.0" layoutY="274.0" mnemonicParsing="false" text="Download" textFill="#447b0a">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
