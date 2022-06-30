@@ -31,6 +31,10 @@ public class CoursePageSt {
     private ChoiceBox<?> notifmnu;
 
     @FXML
+    private Button showbtn;
+
+
+    @FXML
     void backbtnclk(ActionEvent event) throws IOException {
         Stage pstage = (Stage) backbtn.getScene().getWindow();
         pstage.close();
@@ -42,6 +46,17 @@ public class CoursePageSt {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    @FXML
+    void showbtnclk(ActionEvent event) {
+        coursenamelbl.setText(HomePage.getCurcourse().getTitle());
+        for(int i=0;i<HomePage.getCurcourse().courseobjects.size();i++) {
+            if(HomePage.getCurcourse().courseobjects.get(i) instanceof Notification) {
+                // continue...
+            }
+        }
     }
 
 }

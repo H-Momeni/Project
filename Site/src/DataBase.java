@@ -39,7 +39,8 @@ public class DataBase {
     }
 
     private static void CreateTable_coursecode(int code) {
-        String tablecrtquery = "CREATE TABLE IF NOT EXISTS '%s' (title VARCHAR(255) NOT NULL, quspath VARCHAR(255), anspath VARCHAR(255), state TINYINT, sarttime VARCHAR(255), endtime VARCHAR(255), grade DOUBLE, review TINYINT, notiftext TEXT, type TINYINT);";
+        String name = "c" + Integer.toString(code);
+        String tablecrtquery = "CREATE TABLE IF NOT EXISTS " + name + " (title VARCHAR(255) NOT NULL, quspath VARCHAR(255), anspath VARCHAR(255), state TINYINT, sarttime VARCHAR(255), endtime VARCHAR(255), grade DOUBLE, review TINYINT, notiftext TEXT, type TINYINT);";
         tablecrtquery = String.format(tablecrtquery, Integer.toString(code));
         try {
             statement.executeUpdate(tablecrtquery);
@@ -311,6 +312,59 @@ public class DataBase {
             while (result.next()) {
                 curcourse = new Course(result.getString("title"), result.getInt("code"));
                 output.add(curcourse);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i<output.size();i++) {
+            output.get(i).courseobjects = FindObjects(output.get(i).getCode());
+        }
+        return output;
+    }
+
+    private static ArrayList<CourseObject> FindObjects(int code) {
+        CreateTable_coursecode(code);
+        String name = "c" + Integer.toString(code);
+        String findquery = "SELECT * FROM " + name + " ;";
+        ArrayList<CourseObject> output = new ArrayList<>();
+        CourseObject curobj = null;
+        try {
+            ResultSet result = statement.executeQuery(findquery);
+            while (result.next()) {
+                if(result.getInt("type") == 1) {
+                    curobj = new Notification(result.getString("title"), result.getString("notiftext"));
+                } else if (result.getInt("type") == 2) {
+                    curobj = new Content(result.getString("title"), result.getString("quspath"));
+                } else if (result.getInt("type") == 3) {
+                    boolean state;
+                    if(result.getInt("state") == 1) {
+                        state = true;
+                    } else {
+                        state = false;
+                    }
+                    Time st = Time.stringtotime(result.getString("starttime"));
+                    Time et = Time.stringtotime(result.getString("endtime"));
+                    curobj = new Homework(result.getString("title"), result.getString("quspath"),
+                        result.getString("anspath"), state, st, et, result.getDouble("grade"));
+                } else {
+                    boolean state;
+                    boolean review;
+                    if(result.getInt("state") == 1) {
+                        state = true;
+                    } else {
+                        state = false;
+                    }
+                    if(result.getInt("review") == 1) {
+                        review = true;
+                    } else {
+                        review = false;
+                    }
+                    Time st = Time.stringtotime(result.getString("starttime"));
+                    Time et = Time.stringtotime(result.getString("endtime"));
+                    curobj = new Exam(result.getString("title"), result.getString("quspath"),
+                        result.getString("anspath"), state, st, et, result.getDouble("grade"), review);
+                }
+                output.add(curobj);
             }
         } catch (SQLException e) {
             e.printStackTrace();
