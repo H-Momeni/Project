@@ -37,5 +37,10 @@
             <Image url="@usePlus.jpg" />
          </image>
       </ImageView>
+      <TextField layoutX="56.0" layoutY="275.0" prefHeight="39.0" prefWidth="198.0" promptText="First Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

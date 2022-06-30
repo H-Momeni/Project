@@ -93,6 +93,7 @@ public class SignUp {
                     final InputStream targetStream;
                     try {
                         targetStream = new DataInputStream(new FileInputStream(selectedFile));
+                        System.out.println(String.valueOf(targetStream));
                         Image image = new Image(targetStream);
                         iv.setImage(image); // Set Image
 
