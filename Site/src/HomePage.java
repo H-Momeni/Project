@@ -23,8 +23,52 @@ import javafx.stage.Stage;
 public class HomePage {
 
     @FXML
-    private Hyperlink Hypercourse;
+    private Button button1;
 
+    @FXML
+    private Button button10;
+
+    @FXML
+    private Button button11;
+
+    @FXML
+    private Button button12;
+
+    @FXML
+    private Button button13;
+
+    @FXML
+    private Button button14;
+
+    @FXML
+    private Button button15;
+
+    @FXML
+    private Button button16;
+
+    @FXML
+    private Button button2;
+
+    @FXML
+    private Button button3;
+
+    @FXML
+    private Button button4;
+
+    @FXML
+    private Button button5;
+
+    @FXML
+    private Button button6;
+
+    @FXML
+    private Button button7;
+
+    @FXML
+    private Button button8;
+
+    @FXML
+    private Button button9;
 
     @FXML
     private Text time;
@@ -39,6 +83,9 @@ public class HomePage {
     private Button btnback;
 
     @FXML
+    private Button btnTime;
+
+    @FXML
     private Label lblName;
 
     @FXML
@@ -48,43 +95,31 @@ public class HomePage {
             public void handle(long now) {
                 time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
-                lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
-
             }
         };
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
-        timer.start();
-    }
-
-    @FXML
-    void clickHyperCourse(ActionEvent event) {
-        int i = 0;
-        int count = 20;// in 20 tedad doros daneshjo bayad bashe
-        Button[] course = new Button[count];
-        Stage pstage = (Stage) btnback.getScene().getWindow();
-        pstage.close();
-        Stage stage = new Stage();
-        GridPane root = new GridPane();
-        root.setVgap(30);
-        root.setHgap(30);
-        for (int k = 0; k < 3; k++) { // be sorat ye jadval 3*3 print mishe ke mitoni, taghir bedim
-            for (int j = 0; j < 3; j++) {
-                if (i != 13) { // in 13 tedad dros daneshjoee
-                    course[i] = new Button("Course" + String.valueOf(i)); // avas shodan esm dar inja
-                    Font font = Font.font("Courier New", FontWeight.BOLD, 18); // adad akhar size button
-                    course[i].setFont(font);
-                    root.add(course[i], k, j);
-                    i++;
-                }
-            }
+        Button[] coursebuttons = new Button[16];
+        coursebuttons[0] = button1;
+        coursebuttons[1] = button2;
+        coursebuttons[2] = button3;
+        coursebuttons[3] = button4;
+        coursebuttons[4] = button5;
+        coursebuttons[5] = button6;
+        coursebuttons[6] = button7;
+        coursebuttons[7] = button8;
+        coursebuttons[8] = button9;
+        coursebuttons[9] = button10;
+        coursebuttons[10] = button11;
+        coursebuttons[11] = button12;
+        coursebuttons[12] = button13;
+        coursebuttons[13] = button14;
+        coursebuttons[14] = button15;
+        coursebuttons[15] = button16;
+        for(int i = 0; i< 6; i++) {
+            coursebuttons[i].setVisible(true);
+            //coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
         }
-        Scene scene = new Scene(root, 400, 400); // mitonim 400*400 ro avaz konim
-        BackgroundFill background_fill = new BackgroundFill(Color.DARKBLUE, CornerRadii.EMPTY, Insets.EMPTY);
-        Background background = new Background(background_fill);
-        root.setBackground(background);
-        stage.setTitle("Courses");
-        stage.setScene(scene);
-        stage.show();
+        timer.start();
     }
 
     @FXML
@@ -118,6 +153,11 @@ public class HomePage {
 
     @FXML
     void clickbtnMassanger(ActionEvent event) {
+
+    }
+
+    @FXML
+    void coursebtnclk(ActionEvent event) {
 
     }
 
