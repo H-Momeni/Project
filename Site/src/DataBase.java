@@ -1,3 +1,4 @@
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class DataBase {
     }
 
     private static void CreateTable_users() {
-        String tablecrtquery = "CREATE TABLE IF NOT EXISTS users (id VARCHAR(255) PRIMARY KEY NOT NULL, password VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, username VARCHAR(255), discipline VARCHAR(255), email VARCHAR(255), phonenumber VARCHAR(255), role TINYINT);";
+        String tablecrtquery = "CREATE TABLE IF NOT EXISTS users (id VARCHAR(255) PRIMARY KEY NOT NULL, password VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, username VARCHAR(255), discipline VARCHAR(255), email VARCHAR(255), phonenumber VARCHAR(255), role TINYINT, photopath VARCHAR(255) );";
         try {
             statement.executeUpdate(tablecrtquery);
         } catch (SQLException e) {
@@ -61,21 +62,25 @@ public class DataBase {
         String Email = user.getEmail();
         String Phone = user.getPhone();
         int role; // faculty=1 student=2
+        String Photopath;
         if (user instanceof Faculty) {
             role = 1;
         } else {
             role = 2;
         }
+        if(user.getPhoto()==null) {
+            Photopath = "";
+        } else {
+            Photopath = user.getPhoto().getPath();
+        }
 
-        String insertquery = "INSERT INTO users (id, password, firstname, lastname, username, discipline, email, phonenumber, role) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')";
-        insertquery = String.format(insertquery, ID, Password, Firstname, LastName, Username, Discipline, Email, Phone,
-                role);
+        String insertquery = "INSERT INTO users (id, password, firstname, lastname, username, discipline, email, phonenumber, role, photopath) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%s')";
+        insertquery = String.format(insertquery, ID, Password, Firstname, LastName, Username, Discipline, Email, Phone,role, Photopath);
         try {
             statement.executeUpdate(insertquery);
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "person");
             e.printStackTrace();
         }
 

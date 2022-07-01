@@ -11,13 +11,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class SignUp {
     final FileChooser fileChooser = new FileChooser();
+    private File selectedFile;
 
     @FXML
     private ImageView iv;
@@ -85,7 +84,7 @@ public class SignUp {
     @FXML
     void clickprofbtn(ActionEvent event) {
        
-        File selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
 
             final InputStream targetStream;
@@ -128,6 +127,9 @@ public class SignUp {
                         txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(),
                         txtMobilePhone.getText());
 
+                if(selectedFile!=null) {
+                    teacher.setPhoto(selectedFile.getPath());
+                }
                 DataBase.AddUser(teacher);
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
@@ -141,6 +143,9 @@ public class SignUp {
                         txtlastname.getText(), txtUsername.getText(), txtMajor.getText(), txtEmail.getText(),
                         txtMobilePhone.getText());
 
+                if(selectedFile!=null) {
+                    student.setPhoto(selectedFile.getPath());
+                }
                 DataBase.AddUser(student);
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);

@@ -11,106 +11,100 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="482.0" prefWidth="757.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="482.0" prefWidth="757.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CoursePageFa">
    <children>
-      <Button layoutX="184.0" layoutY="345.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="77.0" style="-fx-background-color: #000000;" />
-      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="51.0" prefHeight="342.0" prefWidth="150.0" spacing="40.0">
+      <Button fx:id="addstudentbtn" layoutX="251.0" layoutY="364.0" mnemonicParsing="false" onAction="#addstudentbtnclk" prefHeight="62.0" prefWidth="75.0" style="-fx-background-color: #000000;" />
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="88.0" prefHeight="257.0" prefWidth="150.0" spacing="40.0">
          <children>
             <Label text="Notifications:" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="86.0" text="Home work:" textFill="WHITE">
-               <font>
-                  <Font size="25.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
             <Label layoutX="10.0" layoutY="10.0" text="Content:" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="86.0" text="Home work:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Label>
             <Label layoutX="10.0" layoutY="162.0" text="Exam:" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label text="Add student:" textFill="WHITE">
-               <font>
-                  <Font size="22.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>
       </VBox>
       <Line endX="559.800048828125" fill="#36c7c7" layoutX="180.0" layoutY="443.0" startX="-146.0" stroke="#53cef7" strokeWidth="5.0" />
-      <Button layoutX="586.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #000225;" />
-      <ImageView fitHeight="39.0" fitWidth="58.0" layoutX="605.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="backbtn" layoutX="631.0" layoutY="22.0" mnemonicParsing="false" onAction="#backbtnclk" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #000225;" />
+      <ImageView fitHeight="39.0" fitWidth="58.0" layoutX="650.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@back.jpg" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="472.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="show notification (hazf beshe matn)" wrappingWidth="265.6000122070312">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="472.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آدرس فایل برای content/حذف شه" wrappingWidth="265.6000122070311">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="46.0" fitWidth="56.0" layoutX="199.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="56.0" layoutX="266.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@manual.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="315.0" layoutY="345.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="77.0" style="-fx-background-color: #000000;" />
-      <ImageView fitHeight="71.0" fitWidth="48.0" layoutX="333.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="addstudentexbtn" layoutX="376.0" layoutY="364.0" mnemonicParsing="false" onAction="#addstudentexbtnclk" prefHeight="62.0" prefWidth="77.0" style="-fx-background-color: #000000;" />
+      <ImageView fitHeight="71.0" fitWidth="48.0" layoutX="394.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@xcel.jpg" />
          </image>
       </ImageView>
-      <SplitMenuButton layoutX="184.0" layoutY="278.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="170.0">
+      <SplitMenuButton fx:id="exammnu" layoutX="164.0" layoutY="298.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="424.0">
          <items>
             <MenuItem mnemonicParsing="false" text="Action 1" />
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="184.0" layoutY="206.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="170.0">
+      <SplitMenuButton fx:id="homewmnu" layoutX="164.0" layoutY="229.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="424.0">
          <items>
             <MenuItem mnemonicParsing="false" text="Action 1" />
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </SplitMenuButton>
-      <ChoiceBox layoutX="184.0" layoutY="131.0" prefHeight="32.0" prefWidth="170.0" />
-      <ChoiceBox layoutX="187.0" layoutY="56.0" prefHeight="32.0" prefWidth="170.0" />
-      <Button layoutX="390.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
-      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="396.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+      <ChoiceBox fx:id="contentmnu" layoutX="164.0" layoutY="154.0" prefHeight="40.0" prefWidth="424.0" />
+      <ChoiceBox fx:id="notifmnu" layoutX="164.0" layoutY="84.0" prefHeight="40.0" prefWidth="424.0" />
+      <Button fx:id="addnotifbtn" layoutX="628.0" layoutY="84.0" mnemonicParsing="false" onAction="#addnotifbtnclk" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
+      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="634.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@addStudent.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="389.0" layoutY="127.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
-      <Button layoutX="390.0" layoutY="197.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
-      <Button layoutX="389.0" layoutY="275.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
-      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="394.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="addcontentbtn" layoutX="629.0" layoutY="154.0" mnemonicParsing="false" onAction="#addcontentbtnclk" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
+      <Button fx:id="addhomewbtn" layoutX="629.0" layoutY="229.0" mnemonicParsing="false" onAction="#addhomewbtnclk" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
+      <Button fx:id="addexambtn" layoutX="629.0" layoutY="303.0" mnemonicParsing="false" onAction="#addexambtnclk" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
+      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="634.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@addStudent.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="394.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="634.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@addStudent.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="31.0" layoutX="398.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="31.0" layoutX="638.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@addStudent.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="showbtn" layoutX="562.0" layoutY="21.0" mnemonicParsing="false" onAction="#showbtnclk" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: #000225;" text="Show" textFill="WHITE" />
+      <Label fx:id="coursenamelbl" layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="205.0" text="name of course" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="381.0" text="Add student:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
