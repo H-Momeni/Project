@@ -1,17 +1,24 @@
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import javax.imageio.ImageIO;
+
 import javafx.animation.AnimationTimer;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class HomePage {
+public class HomePageSt {
 
     private static Course curcourse;
     private static Button[] coursebuttons = new Button[16];
@@ -80,10 +87,14 @@ public class HomePage {
     private Button btnTime;
 
     @FXML
+    private ImageView profimg;
+
+
+    @FXML
     private Label lblName;
 
     @FXML
-    void clickTimebtn(ActionEvent event) {
+    void clickTimebtn(ActionEvent event) throws IOException {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -111,6 +122,11 @@ public class HomePage {
         for(int i = 0; i< Login.getCurperson().courses.size(); i++) {
             coursebuttons[i].setVisible(true);
             coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
+        }
+        if(Login.getCurperson().getPhoto() != null) {
+            BufferedImage buff = ImageIO.read(Login.getCurperson().getPhoto());
+            Image profile = SwingFXUtils.toFXImage(buff, null);
+            profimg.setImage(profile);
         }
         timer.start();
     }

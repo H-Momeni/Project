@@ -10,28 +10,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePage">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageFa">
    <children>
    
-      <Button fx:id="btnback" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
-      <Button fx:id="btnEdit" layoutX="437.0" layoutY="23.0" mnemonicParsing="false" onAction="#clckbtnEdit" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
-      <Button fx:id="btnMassnger" layoutX="322.0" layoutY="22.0" mnemonicParsing="false" onAction="#clickbtnMassanger" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
-      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="560.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btnback" layoutX="546.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <Button fx:id="btnEdit" layoutX="449.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnEdit" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <Button fx:id="btnMassnger" layoutX="352.0" layoutY="22.0" mnemonicParsing="false" onAction="#clickbtnMassanger" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="563.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@back.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="451.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="463.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Edit.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="336.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="366.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@massanger.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="lblName" layoutX="33.0" layoutY="23.0" text="Name" textFill="WHITE">
+      <Label fx:id="lblName" layoutX="85.0" layoutY="30.0" text="Name" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -42,8 +42,8 @@
          </font>
       </Label>
       <Line endX="60.199981689453125" fill="WHITE" layoutX="115.0" layoutY="217.0" startX="-100.0" stroke="#dcd8e8" strokeWidth="3.0" />
-      <Button fx:id="btnTime" layoutX="16.0" layoutY="77.0" mnemonicParsing="false" onAction="#clickTimebtn" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
-      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="33.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btnTime" layoutX="16.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickTimebtn" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="33.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@calender.jpg" />
          </image>
@@ -75,6 +75,20 @@
       <Button fx:id="button14" layoutX="322.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c14" visible="false" />
       <Button fx:id="button15" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c15" visible="false" />
       <Button fx:id="button16" layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c16" visible="false" />
+      <Button fx:id="addcoursebtn" layoutX="290.0" layoutY="22.0" mnemonicParsing="false" onAction="#addcoursebtnclk" prefHeight="46.0" prefWidth="52.0" style="-fx-background-color: #000225;">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="36.0" fitWidth="51.0" layoutX="298.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@addStudent.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="profimg" fitHeight="54.0" fitWidth="51.0" layoutX="26.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Profile.jpg" />
+         </image></ImageView>
 
    </children>
 </AnchorPane>

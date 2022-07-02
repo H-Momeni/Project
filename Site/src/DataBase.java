@@ -69,9 +69,10 @@ public class DataBase {
             role = 2;
         }
         if(user.getPhoto()==null) {
-            Photopath = "";
+            Photopath = null;
         } else {
-            Photopath = user.getPhoto().getPath();
+            String realpath = user.getPhoto().getPath();
+            Photopath = realpath.replace('\\', '/');
         }
 
         String insertquery = "INSERT INTO users (id, password, firstname, lastname, username, discipline, email, phonenumber, role, photopath) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%s')";
@@ -103,6 +104,11 @@ public class DataBase {
                 curperson = new Student(ID, result.getString("password"), result.getString("firstname"),
                         result.getString("lastname"), result.getString("username"), result.getString("discipline"),
                         result.getString("email"), result.getString("phonenumber"));
+            }
+            String filepath = result.getString("photopath");
+            if(filepath!=null) {
+                String realpath = filepath.replace('/', '\\');
+                curperson.setPhoto(realpath);
             }
             curperson.courses = FindCourses(curperson.getID());
         } catch (SQLException e) {
@@ -181,8 +187,9 @@ public class DataBase {
         String title = course.getTitle();
         int code = course.getCode();
         String ID = user.getID();
-        String insertquery = "INSERT INTO '%s' (title, code) VALUES ('%s', '%d')";
-        insertquery = String.format(insertquery, ID, title, code);
+        String name = "s" + ID;
+        String insertquery = "INSERT INTO " + name + " (title, code) VALUES ('%s', '%d')";
+        insertquery = String.format(insertquery, title, code);
         try {
             statement.executeUpdate(insertquery);
             statement.close();
@@ -192,7 +199,7 @@ public class DataBase {
         }
     }
 
-    public static void AddCourseobject(Course course, CourseObject object) {
+    public static void AddObject(Course course, CourseObject object) {
         ConnectToDatabase();
         CreateTable_coursecode(course.getCode());
         String title = object.getTitle();
@@ -205,12 +212,13 @@ public class DataBase {
         int review;
         String notiftext;
         int type; // notification=1 content=2 homework=3 exam=4
+        String name = "c" + Integer.toString(course.getCode());
         if (object instanceof Notification) {
             Notification notification = (Notification) object;
             notiftext = notification.getText();
             type = 1;
-            String insertquery = "INSERT INTO '%s' (title, notiftext, type) VALUES ('%s', '%s', '%d')";
-            insertquery = String.format(insertquery, Integer.toString(course.getCode()), title, notiftext, type);
+            String insertquery = "INSERT INTO " + name + " (title, notiftext, type) VALUES ('%s', '%s', '%d')";
+            insertquery = String.format(insertquery, title, notiftext, type);
             try {
                 statement.executeUpdate(insertquery);
                 statement.close();
@@ -220,10 +228,11 @@ public class DataBase {
             }
         } else if (object instanceof Content) {
             Content content = (Content) object;
-            quspath = content.getFilepath();
+            String realquspath = content.getFilepath();
+            quspath = realquspath.replace('\\', '/');
             type = 2;
-            String insertquery = "INSERT INTO '%s' (title, quspath, type) VALUES ('%s', '%s', '%d')";
-            insertquery = String.format(insertquery, Integer.toString(course.getCode()), title, quspath, type);
+            String insertquery = "INSERT INTO " + name + " (title, quspath, type) VALUES ('%s', '%s', '%d')";
+            insertquery = String.format(insertquery, title, quspath, type);
             try {
                 statement.executeUpdate(insertquery);
                 statement.close();
@@ -233,8 +242,10 @@ public class DataBase {
             }
         } else if (object instanceof Homework) {
             Homework homework = (Homework) object;
-            quspath = homework.getQuspath();
-            anspath = homework.getAnspath();
+            String realquspath = homework.getQuspath();
+            String realanspath = homework.getAnspath();
+            quspath = realquspath.replace('\\', '/');
+            anspath = realanspath.replace('\\', '/');
             starttime = Time.timetoString(homework.getStartTime());
             endtime = Time.timetoString(homework.getEndTime());
             grade = homework.getGrade();
@@ -244,8 +255,8 @@ public class DataBase {
                 state = 0;
             }
             type = 3;
-            String insertquery = "INSERT INTO '%s' (title, quspath, anspath, state, starttime, endtime, grade, type) VALUES ('%s', '%s', '%s', '%d', '%s', '%s', '%lf', '%d');";
-            insertquery = String.format(insertquery, Integer.toString(course.getCode()), title, quspath, anspath, state, starttime, endtime, grade, type);
+            String insertquery = "INSERT INTO " + name + " (title, quspath, anspath, state, starttime, endtime, grade, type) VALUES ('%s', '%s', '%s', '%d', '%s', '%s', '%lf', '%d');";
+            insertquery = String.format(insertquery, title, quspath, anspath, state, starttime, endtime, grade, type);
             try {
                 statement.executeUpdate(insertquery);
                 statement.close();
@@ -255,8 +266,10 @@ public class DataBase {
             }
         } else {
             Exam exam = (Exam) object;
-            quspath = exam.getQuspath();
-            anspath = exam.getAnspath();
+            String realquspath = exam.getQuspath();
+            String realanspath = exam.getAnspath();
+            quspath = realquspath.replace('\\', '/');
+            anspath = realanspath.replace('\\', '/');
             starttime = Time.timetoString(exam.getStartTime());
             endtime = Time.timetoString(exam.getEndTime());
             grade = exam.getGrade();
@@ -271,8 +284,8 @@ public class DataBase {
                 review = 0;
             }
             type = 4;
-            String insertquery = "INSERT INTO '%s' (title, quspath, anspath, state, starttime, endtime, grade, review, type) VALUES ('%s', '%s', '%s', '%d', '%s', '%s', '%lf', '%d', '%d');";
-            insertquery = String.format(insertquery, Integer.toString(course.getCode()), title, quspath, anspath, state, starttime, endtime, grade, review, type);
+            String insertquery = "INSERT INTO " + name + " (title, quspath, anspath, state, starttime, endtime, grade, review, type) VALUES ('%s', '%s', '%s', '%d', '%s', '%s', '%lf', '%d', '%d');";
+            insertquery = String.format(insertquery, title, quspath, anspath, state, starttime, endtime, grade, review, type);
             try {
                 statement.executeUpdate(insertquery);
                 statement.close();
@@ -339,7 +352,9 @@ public class DataBase {
                 if(result.getInt("type") == 1) {
                     curobj = new Notification(result.getString("title"), result.getString("notiftext"));
                 } else if (result.getInt("type") == 2) {
-                    curobj = new Content(result.getString("title"), result.getString("quspath"));
+                    String quspath = result.getString("quspath");
+                    String realquspath = quspath.replace('/', '\\');
+                    curobj = new Content(result.getString("title"), realquspath);
                 } else if (result.getInt("type") == 3) {
                     boolean state;
                     if(result.getInt("state") == 1) {
@@ -349,8 +364,12 @@ public class DataBase {
                     }
                     Time st = Time.stringtotime(result.getString("starttime"));
                     Time et = Time.stringtotime(result.getString("endtime"));
-                    curobj = new Homework(result.getString("title"), result.getString("quspath"),
-                        result.getString("anspath"), state, st, et, result.getDouble("grade"));
+                    String quspath = result.getString("quspath");
+                    String realquspath = quspath.replace('/', '\\');
+                    String anspath = result.getString("anspath");
+                    String realanspath = anspath.replace('/', '\\');
+                    curobj = new Homework(result.getString("title"), realquspath,
+                        realanspath, state, st, et, result.getDouble("grade"));
                 } else {
                     boolean state;
                     boolean review;
@@ -366,8 +385,12 @@ public class DataBase {
                     }
                     Time st = Time.stringtotime(result.getString("starttime"));
                     Time et = Time.stringtotime(result.getString("endtime"));
-                    curobj = new Exam(result.getString("title"), result.getString("quspath"),
-                        result.getString("anspath"), state, st, et, result.getDouble("grade"), review);
+                    String quspath = result.getString("quspath");
+                    String realquspath = quspath.replace('/', '\\');
+                    String anspath = result.getString("anspath");
+                    String realanspath = anspath.replace('/', '\\');
+                    curobj = new Exam(result.getString("title"), realquspath,
+                        realanspath, state, st, et, result.getDouble("grade"), review);
                 }
                 output.add(curobj);
             }
