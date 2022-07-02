@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public abstract class Person {
@@ -11,7 +12,7 @@ public abstract class Person {
     private String Email;
     private String Phone;
     public ArrayList<Course> courses = new ArrayList<Course>();
-    // photo : file
+    private File photo;
 
     public Person(String ID, String Password, String FirstName, String LastName) {
         setID(ID);
@@ -61,6 +62,10 @@ public abstract class Person {
         this.Phone = phone;
     }
 
+    public void setPhoto(String path) {
+        this.photo = new File(path);
+    }
+
     public String getID() {
         return ID;
     }
@@ -91,6 +96,10 @@ public abstract class Person {
 
     public String getPhone() {
         return Phone;
+    }
+
+    public File getPhoto() {
+        return photo;
     }
 
 }
