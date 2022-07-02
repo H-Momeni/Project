@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageSt">
+   <children>
+   
+      <Button fx:id="btnback" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <Button fx:id="btnEdit" layoutX="439.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnEdit" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <Button fx:id="btnMassnger" layoutX="337.0" layoutY="22.0" mnemonicParsing="false" onAction="#clickbtnMassanger" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="560.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="453.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Edit.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="58.0" layoutX="351.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@massanger.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblName" layoutX="92.0" layoutY="30.0" text="Name" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="182.0" text="Close Events" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
+      <Line endX="60.199981689453125" fill="WHITE" layoutX="115.0" layoutY="217.0" startX="-100.0" stroke="#dcd8e8" strokeWidth="3.0" />
+      <Button fx:id="btnTime" layoutX="16.0" layoutY="80.0" mnemonicParsing="false" onAction="#clickTimebtn" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
+      <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="33.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@calender.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="time" fill="WHITE" layoutX="16.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <DatePicker layoutX="13.0" layoutY="242.0" prefHeight="31.0" prefWidth="163.0" />
+      <Button layoutX="24.0" layoutY="284.0" mnemonicParsing="false" style="-fx-background-color: #090956;" text="Go to the selected date" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="button1" layoutX="221.0" layoutY="130.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c1" visible="false" />
+      <Button fx:id="button2" layoutX="322.0" layoutY="130.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c2" visible="false" />
+      <Button fx:id="button3" layoutX="425.0" layoutY="130.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c3" visible="false" />
+      <Button fx:id="button4" layoutX="526.0" layoutY="130.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c4" visible="false" />
+      <Button fx:id="button5" layoutX="222.0" layoutY="206.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c5" visible="false" />
+      <Button fx:id="button6" layoutX="323.0" layoutY="206.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c6" visible="false" />
+      <Button fx:id="button7" layoutX="426.0" layoutY="206.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c7" visible="false" />
+      <Button fx:id="button8" layoutX="527.0" layoutY="206.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c8" visible="false" />
+      <Button fx:id="button9" layoutX="222.0" layoutY="286.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c9" visible="false" />
+      <Button fx:id="button10" layoutX="323.0" layoutY="286.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c10" visible="false" />
+      <Button fx:id="button11" layoutX="426.0" layoutY="286.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c11" visible="false" />
+      <Button fx:id="button12" layoutX="527.0" layoutY="286.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c12" visible="false" />
+      <Button fx:id="button13" layoutX="221.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c13" visible="false" />
+      <Button fx:id="button14" layoutX="322.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c14" visible="false" />
+      <Button fx:id="button15" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c15" visible="false" />
+      <Button fx:id="button16" layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#coursebtnclk" prefHeight="46.0" prefWidth="67.0" style="-fx-background-color: #000225;" text="c16" visible="false" />
+      <ImageView fx:id="profimg" fitHeight="53.0" fitWidth="53.0" layoutX="23.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Profile.jpg" />
+         </image></ImageView>
+
+   </children>
+</AnchorPane>

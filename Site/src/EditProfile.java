@@ -49,7 +49,12 @@ public class EditProfile {
     void ClickbtnBack(ActionEvent event) throws IOException {
         Stage pstage = (Stage) btnback.getScene().getWindow();
         pstage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
+        FXMLLoader fxmlLoader;
+        if (Login.getCurperson() instanceof Student) {
+            fxmlLoader = new FXMLLoader(getClass().getResource("HomePageSt.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(getClass().getResource("HomePageFa.fxml"));
+        }
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");

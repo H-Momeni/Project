@@ -74,7 +74,12 @@ public class Login {
 
             Stage pstage = (Stage) btnSubmit.getScene().getWindow();
             pstage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
+            FXMLLoader fxmlLoader;
+            if (curperson instanceof Student) {
+                fxmlLoader = new FXMLLoader(getClass().getResource("HomePageSt.fxml"));
+            } else {
+                fxmlLoader = new FXMLLoader(getClass().getResource("HomePageFa.fxml"));
+            }
             Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Welcome");
