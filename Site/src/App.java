@@ -9,7 +9,6 @@ public class App extends Application {
 
     public static Scene scene;
     public static Stage stage;
-    
 
     @Override
     public void start(Stage ignore) throws IOException {
