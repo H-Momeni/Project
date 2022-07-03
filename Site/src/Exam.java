@@ -26,10 +26,8 @@ public class Exam extends CourseObject {
     public void setReview(boolean review){
         this.review = review;
     }
-    private void setStartTime() {
-        LocalDateTime now = LocalDateTime.now();
-        Time time = new Time(now.getYear(), now.getMonthValue(), now.getDayOfMonth(), now.getHour(), now.getMinute(), now.getSecond());
-        this.startTime = time;
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 
     public String getQuspath(){
@@ -55,11 +53,11 @@ public class Exam extends CourseObject {
     }
 
 
-    public Exam(String title, String quspath, Time endTime, boolean review) {
+    public Exam(String title, String quspath, Time startTime, Time endTime, boolean review) {
         super(title);
         setQuspath(quspath);
         setState(false);
-        setStartTime();
+        setStartTime(startTime);
         setEndTime(endTime);
         setReview(review);
     }
