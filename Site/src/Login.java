@@ -18,6 +18,9 @@ public class Login {
     private Button btnSubmit;
 
     @FXML
+    private Button refreshbtn;
+
+    @FXML
     private Button btnforgetpass;
 
     @FXML
@@ -45,6 +48,21 @@ public class Login {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     @FXML
     void clicksubmitbtn(ActionEvent event) throws IOException {
