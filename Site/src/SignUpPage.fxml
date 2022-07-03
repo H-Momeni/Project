@@ -4,6 +4,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -12,6 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="650.0" prefWidth="520.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUp">
    <children>
+      <Button fx:id="refreshbtn" layoutX="10.0" layoutY="7.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: #000000;" />
       <Text fill="WHITE" layoutX="217.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup">
          <font>
             <Font name="System Bold Italic" size="29.0" />
@@ -93,5 +95,10 @@
       </Button>
       <Button fx:id="addprofile" layoutX="377.0" layoutY="131.0" mnemonicParsing="false" onAction="#clickprofbtn" prefHeight="17.0" prefWidth="94.0" text="Add profole" />
       <ImageView fx:id="iv" fitHeight="150.0" fitWidth="146.0" layoutX="352.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="13.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@refresh%20icon.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
