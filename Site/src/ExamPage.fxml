@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ExamController">
    <children>
       <Button fx:id="btnback" layoutX="486.0" layoutY="15.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
-      <Label layoutX="37.0" layoutY="27.0" text="Subject" textFill="WHITE">
+      <Label fx:id="titlelbl" layoutX="37.0" layoutY="27.0" text="Subject" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
       <Separator layoutX="23.0" layoutY="63.0" prefHeight="22.0" prefWidth="562.0" />
-      <Label layoutX="37.0" layoutY="105.0" text="Status :" textFill="WHITE">
+      <Label layoutX="36.0" layoutY="200.0" text="Status :" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="134.0" layoutY="105.0" prefHeight="31.0" prefWidth="451.0" text="تصحیح شده با نمره/تصحیح نشده/خالی یعنی هنوز نداده" textFill="WHITE">
+      <Label fx:id="statuslbl" layoutX="126.0" layoutY="200.0" prefHeight="31.0" prefWidth="451.0" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -32,14 +32,29 @@
             <Image url="@back.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="269.0" layoutY="302.0" mnemonicParsing="false" text="Start" textFill="RED">
+      <Button fx:id="startbtn" layoutX="198.0" layoutY="322.0" mnemonicParsing="false" onAction="#startbtnclk" style="-fx-background-color: #000225;" text="Start" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="260.0" layoutY="240.0" mnemonicParsing="false" text="Review" textFill="#548144">
+      <Button fx:id="reviewbtn" layoutX="287.0" layoutY="322.0" mnemonicParsing="false" onAction="#reviewbtnclk" style="-fx-background-color: #000225;" text="Review" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="37.0" layoutY="242.0" text="Grade :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="gradelbl" layoutX="126.0" layoutY="242.0" prefHeight="31.0" prefWidth="451.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="showbtn" layoutX="419.0" layoutY="15.0" mnemonicParsing="false" onAction="#showbtnclk" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: #000225;" text="Show" textFill="WHITE" />
+      <Label contentDisplay="CENTER" layoutX="45.0" layoutY="100.0" prefHeight="31.0" prefWidth="51.0" text="Start :" textAlignment="CENTER" textFill="WHITE" />
+      <Label contentDisplay="CENTER" layoutX="46.0" layoutY="131.0" prefHeight="31.0" prefWidth="51.0" text="End :" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="startlbl" layoutX="104.0" layoutY="107.0" prefHeight="22.0" prefWidth="305.0" textFill="WHITE" />
+      <Label fx:id="endlbl" layoutX="104.0" layoutY="136.0" prefHeight="22.0" prefWidth="305.0" textFill="WHITE" />
    </children>
 </AnchorPane>

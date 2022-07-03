@@ -30,20 +30,22 @@ public class NotifController {
 
     @FXML
     void backbtnclk(ActionEvent event) throws IOException {
-        if (Login.getCurperson() instanceof Student) {
-            Stage pstage = (Stage) backbtn.getScene().getWindow();
-            pstage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Welcome");
-            stage.setAlwaysOnTop(true);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+        Stage pstage = (Stage) backbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader;
+        if(Login.getCurperson() instanceof Student) {
+            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
         } else {
-            //notiflbl.setText(C);
+            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
         }
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
+    
 
 }

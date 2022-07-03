@@ -3,42 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="482.0" prefWidth="757.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CoursePageFa">
    <children>
       <Button fx:id="addstudentbtn" layoutX="251.0" layoutY="364.0" mnemonicParsing="false" onAction="#addstudentbtnclk" prefHeight="62.0" prefWidth="75.0" style="-fx-background-color: #000000;" />
-      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="88.0" prefHeight="257.0" prefWidth="150.0" spacing="40.0">
-         <children>
-            <Label text="Notifications:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="Content:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="86.0" text="Home work:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="162.0" text="Exam:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
       <Line endX="559.800048828125" fill="#36c7c7" layoutX="180.0" layoutY="443.0" startX="-146.0" stroke="#53cef7" strokeWidth="5.0" />
       <Button fx:id="backbtn" layoutX="631.0" layoutY="22.0" mnemonicParsing="false" onAction="#backbtnclk" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #000225;" />
       <ImageView fitHeight="39.0" fitWidth="58.0" layoutX="650.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -57,20 +30,8 @@
             <Image url="@xcel.jpg" />
          </image>
       </ImageView>
-      <SplitMenuButton fx:id="exammnu" layoutX="164.0" layoutY="298.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="424.0">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-      </SplitMenuButton>
-      <SplitMenuButton fx:id="homewmnu" layoutX="164.0" layoutY="229.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="424.0">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-      </SplitMenuButton>
-      <ChoiceBox fx:id="contentmnu" layoutX="164.0" layoutY="154.0" prefHeight="40.0" prefWidth="424.0" />
-      <ChoiceBox fx:id="notifmnu" layoutX="164.0" layoutY="84.0" prefHeight="40.0" prefWidth="424.0" />
+      <ChoiceBox fx:id="contentmnu" layoutX="39.0" layoutY="154.0" prefHeight="40.0" prefWidth="424.0" />
+      <ChoiceBox fx:id="notifmnu" layoutX="39.0" layoutY="84.0" prefHeight="40.0" prefWidth="424.0" />
       <Button fx:id="addnotifbtn" layoutX="628.0" layoutY="84.0" mnemonicParsing="false" onAction="#addnotifbtnclk" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000000;" />
       <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="634.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -106,5 +67,11 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button fx:id="opennotifbtn" layoutX="484.0" layoutY="84.0" mnemonicParsing="false" onAction="#opennotifbtnclk" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #000225;" text="Open Notification" textFill="WHITE" />
+      <ChoiceBox fx:id="homewmnu" layoutX="39.0" layoutY="229.0" prefHeight="40.0" prefWidth="424.0" />
+      <ChoiceBox fx:id="exammnu" layoutX="39.0" layoutY="303.0" prefHeight="40.0" prefWidth="424.0" />
+      <Button fx:id="opencontentbtn" layoutX="484.0" layoutY="155.0" mnemonicParsing="false" onAction="#opencontentbtnclk" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #000225;" text="Open Content" textFill="WHITE" />
+      <Button fx:id="openhomewbtn" layoutX="484.0" layoutY="230.0" mnemonicParsing="false" onAction="#openhomewbtnclk" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #000225;" text="Open HomeWork" textFill="WHITE" />
+      <Button fx:id="openexambtn" layoutX="484.0" layoutY="304.0" mnemonicParsing="false" onAction="#openexambtnclk" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #000225;" text="Open Exam" textFill="WHITE" />
    </children>
 </AnchorPane>

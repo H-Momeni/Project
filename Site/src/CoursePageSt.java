@@ -1,4 +1,7 @@
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
@@ -92,7 +95,7 @@ public class CoursePageSt {
     }
 
     @FXML
-    void showcontentbtnclk(ActionEvent event) {
+    void showcontentbtnclk(ActionEvent event) throws IOException {
         String selected = contentmnu.getValue();
         if(selected!=null) {
             for(int i=0;i<Contents.size();i++) {
@@ -101,19 +104,60 @@ public class CoursePageSt {
                     break;
                 }
             }
-            DirectoryChooser dc = new DirectoryChooser();
-            // cont...
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            directoryChooser.setTitle("Select a folder");
+            File directory = directoryChooser.showDialog((Stage) backbtn.getScene().getWindow());
+            File source = new File(curcontent.getFilepath());
+            File des = new File(directory.getPath()+"\\"+source.getName());
+            Files.copy(source.toPath(), des.toPath());
         }
     }
 
     @FXML
-    void showexambtnclk(ActionEvent event) {
-
+    void showexambtnclk(ActionEvent event) throws IOException {
+        String selected = exammnu.getValue();
+        if(selected!=null) {
+            for(int i=0;i<Exams.size();i++) {
+                if(Exams.get(i).getTitle().equals(selected)) {
+                    curexam = Exams.get(i);
+                    break;
+                }
+            }
+            Stage pstage = (Stage) showexambtn.getScene().getWindow();
+            pstage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ExamPage.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Welcome");
+            stage.setAlwaysOnTop(true);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
-    void showhomevbtnclk(ActionEvent event) {
-
+    void showhomevbtnclk(ActionEvent event) throws IOException {
+        String selected = homewmnu.getValue();
+        if(selected!=null) {
+            for(int i=0;i<Homeworks.size();i++) {
+                if(Homeworks.get(i).getTitle().equals(selected)) {
+                    curhomework = Homeworks.get(i);
+                    break;
+                }
+            }
+            Stage pstage = (Stage) showhomevbtn.getScene().getWindow();
+            pstage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomeworkPage.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Welcome");
+            stage.setAlwaysOnTop(true);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        }
+        
     }
 
     @FXML
@@ -167,10 +211,6 @@ public class CoursePageSt {
     public static Notification getCurnotif() {
         return curnotif;
     }
-
-    /*public static Content getCurcontent() {
-        return curcontent;
-    }*/
 
     public static Homework getCurhomework() {
         return curhomework;
