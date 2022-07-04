@@ -78,23 +78,24 @@ public class HomeworkController {
                     CoursePageSt.getCurhomework().getEndTime().minute + ":" + CoursePageSt.getCurhomework().getEndTime().second);
             LocalDateTime localnow = LocalDateTime.now();
             Time now = new Time(localnow.getYear(), localnow.getMonthValue(), localnow.getDayOfMonth(), localnow.getHour(), localnow.getMinute(), localnow.getSecond());
-            if(Time.Compare(now, CoursePageSt.getCurexam().getEndTime())) {
-                if(CoursePageSt.getCurexam().getState()) {
-                    statuslbl.setText("Submitted");
+            if(Time.Compare(now, CoursePageSt.getCurhomework().getEndTime())) {
+                Time end = CoursePageSt.getCurhomework().getEndTime();
+                if(CoursePageSt.getCurhomework().getState()) {
+                    statuslbl.setText("Delivered");
                 } else {
-                    //statuslbl.setText();
+                    statuslbl.setText("Not Delivered");
                 }
+                resttimelbl.setText(Time.timetoString(Time.dif(now, end)) + " left");
             } else {
-                /* startbtn.setDisable(true);
-                if(!CoursePageSt.getCurexam().getReview()) {
-                    reviewbtn.setDisable(true);
-                }
-                if(CoursePageSt.getCurexam().getState()) {
-                    statuslbl.setText("Checked");
-                    gradelbl.setText(Double.toString(CoursePageSt.getCurexam().getGrade()));
+                Time end = CoursePageSt.getCurhomework().getEndTime();
+                if(CoursePageSt.getCurhomework().getState()) {
+                    statuslbl.setText("Delivered");
                 } else {
-                    statuslbl.setText("Unchecked");
-                } */
+                    statuslbl.setText("Not Delivered");
+                }
+                resttimelbl.setText(Time.timetoString(Time.dif(end, now)) + " passed");
+                gradelbl.setText(Double.toString(CoursePageSt.getCurhomework().getGrade()));
+                uploadbtn.setDisable(true);
             }
         } else {
             
