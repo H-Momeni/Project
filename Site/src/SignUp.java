@@ -31,6 +31,9 @@ public class SignUp {
     private Button btnVerify;
 
     @FXML
+    private Button refreshbtn;
+
+    @FXML
     private RadioButton radioFaculty;
 
     @FXML
@@ -70,6 +73,19 @@ public class SignUp {
         } else {
             radioStudent.setDisable(false);
         }
+    }
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
