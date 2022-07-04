@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitMenuButton;
 import javafx.stage.Stage;
 
 public class CoursePageFa {
@@ -34,19 +33,31 @@ public class CoursePageFa {
     private Button backbtn;
 
     @FXML
-    private ChoiceBox<?> contentmnu;
+    private ChoiceBox<String> contentmnu;
 
     @FXML
     private Label coursenamelbl;
 
     @FXML
-    private SplitMenuButton exammnu;
+    private ChoiceBox<String> exammnu;
 
     @FXML
-    private SplitMenuButton homewmnu;
+    private ChoiceBox<String> homewmnu;
 
     @FXML
-    private ChoiceBox<?> notifmnu;
+    private ChoiceBox<String> notifmnu;
+
+    @FXML
+    private Button opencontentbtn;
+
+    @FXML
+    private Button openexambtn;
+
+    @FXML
+    private Button openhomewbtn;
+
+    @FXML
+    private Button opennotifbtn;
 
     @FXML
     private Button showbtn;
@@ -96,8 +107,29 @@ public class CoursePageFa {
     }
 
     @FXML
+    void opencontentbtnclk(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openexambtnclk(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openhomewbtnclk(ActionEvent event) {
+
+    }
+
+    @FXML
+    void opennotifbtnclk(ActionEvent event) {
+
+    }
+
+    @FXML
     void showbtnclk(ActionEvent event) {
         coursenamelbl.setText(HomePageFa.getCurcourse().getTitle());
     }
 
 }
+

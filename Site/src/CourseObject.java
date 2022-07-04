@@ -40,6 +40,46 @@ class Time {
         return output;
     }
     
+    public static Time dif(Time start, Time end) {
+        Time result = new Time(0, 0, 0, 0, 0, 0);
+        result.second = end.second - start.second;
+        if(result.second<0) {
+            result.second = 60 + result.second;
+            result.minute--;
+        }
+        int temp = end.minute - start.minute;
+        if(temp<0) {
+            result.minute = 60 + temp + result.minute;
+            result.hour--;
+        } else {
+            result.minute = temp + result.minute;
+        }
+        temp = end.hour - start.hour;
+        if (temp<0) {
+            result.hour = 24 + temp + result.hour;
+            result.day--;
+        } else {
+            result.hour = temp + result.hour;
+        }
+        temp = end.day - start.day;
+        if (temp<0) {
+            result.day = 30 + temp + result.day;
+            result.month--;
+        } else {
+            result.day = temp + result.day;
+        }
+        temp = end.month - start.month;
+        if (temp<0) {
+            result.month = 12 + temp + result.month;
+            result.year--;
+        } else {
+            result.month = temp + result.month;
+        }
+        result.year = end.year - start.year + result.year;
+        return result;
+    }
+
+
     public static boolean Compare(Time t1, Time t2) {
         if(t1.year <= t2.year) {
             return true;
