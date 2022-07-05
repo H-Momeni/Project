@@ -101,8 +101,17 @@ public class HomePageFa {
     
 
     @FXML
-    void addcoursebtnclk(ActionEvent event) {
-        // after designing add page for course
+    void addcoursebtnclk(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) addcoursebtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CreateCourse.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void clickRefreshbtn(ActionEvent event) throws IOException {
