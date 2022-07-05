@@ -23,7 +23,7 @@ public class HomePageFa {
     private static Course curcourse;
     private static Button[] coursebuttons = new Button[16];
 
- @FXML
+    @FXML
     private Button refreshbtn;
 
     @FXML
@@ -98,8 +98,6 @@ public class HomePageFa {
     @FXML
     private Text time;
 
-    
-
     @FXML
     void addcoursebtnclk(ActionEvent event) throws IOException {
         Stage pstage = (Stage) addcoursebtn.getScene().getWindow();
@@ -113,6 +111,7 @@ public class HomePageFa {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void clickRefreshbtn(ActionEvent event) throws IOException {
         Stage pstage = (Stage) refreshbtn.getScene().getWindow();
@@ -164,24 +163,51 @@ public class HomePageFa {
 
             }
         };
-////////////////////////////
-        for(int i=0;i<Login.getCurperson().courses.size();i++){
-            for(CourseObject s :Login.getCurperson().object.size()){
-                if(object instanceof Exam){
-                    Exam exam = (Exam) object;
+        ///////////////////////////
+
+        for (int i = 0; i < Login.getCurperson().courses.size(); i++) {
+            Course cur = new Course(null);
+            cur = Login.getCurperson().courses.get(i);
+            for (int j = 0; j < cur.courseobjects.size(); j++) {
+                Boolean close = false;
+                Time end;
+                Time now = new Time(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(),
+                        LocalDateTime.now().getDayOfMonth(),
+                        LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),
+                        LocalDateTime.now().getSecond());
+                Time diff;
+                Object obj = new Object();
+                obj = cur.courseobjects.get(j);
+
+                if (obj instanceof Exam) {
+                    Exam exam = (Exam) obj;
+                    end = exam.getEndTime();
+                    diff = now.dif(now, end);
+                    if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                            && diff.second <= 59) {
+                        close = true;
+                    }
+                }
+                if (obj instanceof Homework) {
+                    Homework home = (Homework) obj;
+                    end = home.getEndTime();
+                    diff = now.dif(now, end);
+                    if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                            && diff.second <= 59) {
+                        close = true;
+                    }
+                }
+
+                if(close==true){
+                    //bere ghesmat close
                 }
 
             }
         }
 
+        
 
-
-
-
-
-
-
-//////////////////////////
+        //////////////////////////
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
         coursebuttons[0] = button1;
         coursebuttons[1] = button2;
@@ -199,11 +225,11 @@ public class HomePageFa {
         coursebuttons[13] = button14;
         coursebuttons[14] = button15;
         coursebuttons[15] = button16;
-        for(int i = 0; i< Login.getCurperson().courses.size(); i++) {
+        for (int i = 0; i < Login.getCurperson().courses.size(); i++) {
             coursebuttons[i].setVisible(true);
             coursebuttons[i].setText(Login.getCurperson().courses.get(i).getTitle());
         }
-        if(Login.getCurperson().getPhoto() != null) {
+        if (Login.getCurperson().getPhoto() != null) {
             BufferedImage buff = ImageIO.read(Login.getCurperson().getPhoto());
             Image profile = SwingFXUtils.toFXImage(buff, null);
             profimg.setImage(profile);
@@ -218,7 +244,7 @@ public class HomePageFa {
 
     @FXML
     void coursebtnclk(ActionEvent event) throws IOException {
-        Button b =  (Button) event.getSource();
+        Button b = (Button) event.getSource();
         setCurcourse(b);
         Stage pstage = (Stage) btnback.getScene().getWindow();
         pstage.close();
@@ -232,15 +258,14 @@ public class HomePageFa {
         stage.show();
     }
 
-
     private static void setCurcourse(Button button) {
-        for(int i=0; i<Login.getCurperson().courses.size(); i++) {
-            if(button.getText().equals(coursebuttons[i].getText())) {
+        for (int i = 0; i < Login.getCurperson().courses.size(); i++) {
+            if (button.getText().equals(coursebuttons[i].getText())) {
                 curcourse = Login.getCurperson().courses.get(i);
                 break;
             }
         }
-    } 
+    }
 
     public static Course getCurcourse() {
         return curcourse;
