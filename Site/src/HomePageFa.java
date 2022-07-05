@@ -164,6 +164,24 @@ public class HomePageFa {
 
             }
         };
+////////////////////////////
+        for(int i=0;i<Login.getCurperson().courses.size();i++){
+            for(CourseObject s :Login.getCurperson().object.size()){
+                if(object instanceof Exam){
+                    Exam exam = (Exam) object;
+                }
+
+            }
+        }
+
+
+
+
+
+
+
+
+//////////////////////////
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
         coursebuttons[0] = button1;
         coursebuttons[1] = button2;
