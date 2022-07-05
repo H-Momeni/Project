@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class HomeworkController {
+    @FXML
+    private Button refreshbtn;
 
     @FXML
     private Button btnback;
@@ -40,6 +42,20 @@ public class HomeworkController {
 
     @FXML
     private Button uploadbtn;
+
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void clckbtnBack(ActionEvent event) throws IOException {

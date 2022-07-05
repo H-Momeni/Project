@@ -89,6 +89,12 @@
          <image>
             <Image url="@Profile.jpg" />
          </image></ImageView>
+      <Button fx:id="refreshbtn" layoutX="13.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="47.0" prefWidth="56.0" style="-fx-background-color: #000000;" />
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="21.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@refresh%20icon.jpg" />
+         </image>
+      </ImageView>
 
    </children>
 </AnchorPane>

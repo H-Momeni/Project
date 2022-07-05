@@ -10,6 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="400.0" prefWidth="503.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeworkController">
    <children>
+      <Button fx:id="refreshbtn" layoutX="261.0" layoutY="22.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="47.0" prefWidth="56.0" style="-fx-background-color: #000000;" />
       <Button layoutX="376.0" layoutY="306.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="102.0" style="-fx-background-color: #1B1A18;" text="Button" />
       <Label fx:id="titlelbl" layoutX="36.0" layoutY="28.0" prefHeight="36.0" prefWidth="104.0" text="subject" textFill="WHITE">
          <font>
@@ -77,5 +78,10 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Button>
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="268.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@refresh%20icon.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

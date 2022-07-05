@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,9 +12,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class EditProfile {
+    final FileChooser fileChooser = new FileChooser();
+    private File selectedFile;
+
+    @FXML
+    private ImageView iv;
 
     @FXML
     private Button addprofile;
@@ -107,7 +119,22 @@ public class EditProfile {
 
     @FXML
     void clickprofbtn(ActionEvent event) {
+        selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
 
+            final InputStream targetStream;
+            try {
+                targetStream = new DataInputStream(new FileInputStream(selectedFile));
+                Image image = new Image(targetStream);
+                iv.setImage(image);
+                iv.setVisible(true);
+                // addprofile.setVisible(false);
+
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            }
+
+        }
     }
 
 }

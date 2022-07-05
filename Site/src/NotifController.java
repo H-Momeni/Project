@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 public class NotifController {
 
     @FXML
+    private Button refreshbtn;
+
+    @FXML
     private Label notiflbl;
     
     @FXML
@@ -38,6 +41,19 @@ public class NotifController {
         } else {
             fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
         }
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");

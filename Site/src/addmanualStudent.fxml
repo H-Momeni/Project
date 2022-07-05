@@ -10,6 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="338.0" prefWidth="505.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Button fx:id="refreshbtn" layoutX="417.0" layoutY="271.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: #000000;" />
       <TextField layoutX="56.0" layoutY="211.0" prefHeight="39.0" prefWidth="198.0" promptText="Last Name">
          <font>
             <Font size="16.0" />
@@ -42,5 +43,10 @@
             <Font size="16.0" />
          </font>
       </TextField>
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="423.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@refresh%20icon.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

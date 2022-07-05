@@ -12,6 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageSt">
    <children>
+      <Button fx:id="refreshbtn" layoutX="8.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: #000000;" />
    
       <Button fx:id="btnback" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
       <Button fx:id="btnEdit" layoutX="439.0" layoutY="22.0" mnemonicParsing="false" onAction="#clckbtnEdit" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
@@ -79,6 +80,11 @@
          <image>
             <Image url="@Profile.jpg" />
          </image></ImageView>
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="14.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@refresh%20icon.jpg" />
+         </image>
+      </ImageView>
 
    </children>
 </AnchorPane>

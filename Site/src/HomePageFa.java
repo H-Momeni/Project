@@ -23,6 +23,8 @@ public class HomePageFa {
     private static Course curcourse;
     private static Button[] coursebuttons = new Button[16];
 
+ @FXML
+    private Button refreshbtn;
 
     @FXML
     private Button addcoursebtn;
@@ -96,9 +98,24 @@ public class HomePageFa {
     @FXML
     private Text time;
 
+    
+
     @FXML
     void addcoursebtnclk(ActionEvent event) {
         // after designing add page for course
+    }
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageFa.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
