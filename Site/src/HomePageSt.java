@@ -24,6 +24,18 @@ public class HomePageSt {
     private static Button[] coursebuttons = new Button[16];
 
     @FXML
+    private Button btnEdit;
+
+    @FXML
+    private Button btnMassnger;
+
+    @FXML
+    private Button btnTime;
+
+    @FXML
+    private Button btnback;
+
+    @FXML
     private Button button1;
 
     @FXML
@@ -72,26 +84,26 @@ public class HomePageSt {
     private Button button9;
 
     @FXML
-    private Text time;
+    private Label eventlbl1;
 
     @FXML
-    private Button btnEdit;
+    private Label eventlbl2;
 
     @FXML
-    private Button btnMassnger;
+    private Label eventlbl3;
 
     @FXML
-    private Button btnback;
-
-    @FXML
-    private Button btnTime;
+    private Label lblName;
 
     @FXML
     private ImageView profimg;
 
+    @FXML
+    private Button refreshbtn;
 
     @FXML
-    private Label lblName;
+    private Text time;
+
 
     @FXML
     void clickTimebtn(ActionEvent event) throws IOException {
@@ -102,6 +114,97 @@ public class HomePageSt {
 
             }
         };
+
+        int lblnumber = 3;
+        first: 
+        for (int i = 0; i < Login.getCurperson().courses.size(); i++) {
+            Course cur = Login.getCurperson().courses.get(i);
+            for (int j = 0; j < cur.courseobjects.size(); j++) {
+                Boolean close = false;
+                Time end;
+                Time now = new Time(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(),
+                        LocalDateTime.now().getDayOfMonth(),
+                        LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),
+                        LocalDateTime.now().getSecond());
+                Time diff;
+                CourseObject corobj = cur.courseobjects.get(j);
+
+                if (corobj instanceof Exam) {
+                    Exam exam = (Exam) corobj;
+                    end = exam.getEndTime();
+                    if(Time.Compare(now, end)) {
+                        diff = Time.dif(now, end);
+                        if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                                && diff.second <= 59) {
+                            close = true;
+                        }
+                    }
+                } else if (corobj instanceof Homework) {
+                    Homework home = (Homework) corobj;
+                    end = home.getEndTime();
+                    if(Time.Compare(now, end)) {
+                        diff = Time.dif(now, end);
+                        if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                                && diff.second <= 59) {
+                            close = true;
+                        }
+                    }
+                }
+
+                if(close && lblnumber>0){
+                    if (lblnumber == 3) {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl1.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber--;
+                    } else if(lblnumber==2) {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl2.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber --;
+                    } else {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl3.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber --;
+                    }
+                }
+
+                if(lblnumber<1) {
+                    break first;
+                }
+
+            }
+        }
+
+
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
         coursebuttons[0] = button1;
         coursebuttons[1] = button2;
@@ -172,6 +275,20 @@ public class HomePageSt {
         Stage pstage = (Stage) btnback.getScene().getWindow();
         pstage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Welcome");
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void clickRefreshbtn(ActionEvent event) throws IOException {
+        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        pstage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageSt.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");

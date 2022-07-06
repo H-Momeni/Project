@@ -22,25 +22,14 @@
             <Image url="@back.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="35.0" layoutY="118.0" text="File addres:" textFill="WHITE">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="171.0" layoutY="120.0" text="/////////" textFill="WHITE">
-         <font>
-            <Font name="System Italic" size="18.0" />
-         </font>
-      </Label>
       <Separator layoutX="34.0" layoutY="97.0" prefHeight="4.0" prefWidth="490.0" />
-      <Label layoutX="34.0" layoutY="178.0" text="Duration:" textFill="WHITE">
+      <Label layoutX="41.0" layoutY="129.0" text="Duration:" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField layoutX="189.0" layoutY="181.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
-      <TextField layoutX="189.0" layoutY="232.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
-      <Label layoutX="34.0" layoutY="229.0" text="Subject:" textFill="WHITE">
+      <TextField fx:id="titlelbl" layoutX="185.0" layoutY="181.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
+      <Label layoutX="41.0" layoutY="178.0" text="Subject:" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>

@@ -5,42 +5,43 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class NotifController {
+public class AddStudentController {
 
     @FXML
-    private Button refreshbtn;
+    private TextField IDlbl;
 
     @FXML
-    private Label notiflbl;
-    
-    @FXML
-    private Button showbtn;
+    private Button addbtn;
 
     @FXML
     private Button backbtn;
 
     @FXML
-    void showbtnclk(ActionEvent event) {
-        if (Login.getCurperson() instanceof Student) {
-            notiflbl.setText(CoursePageSt.getCurnotif().getText());
-        } else {
-            notiflbl.setText(CoursePageFa.getCurnotif().getText());
+    private TextField firstnamelbl;
+
+    @FXML
+    private TextField lastnamelbl;
+
+    @FXML
+    private Button refreshbtn;
+
+    @FXML
+    void addbtnclk(ActionEvent event) {
+        if(!IDlbl.getText().equals("") && !firstnamelbl.getText().equals("") && !lastnamelbl.getText().equals("")) {
+            Student newstudent = new Student(IDlbl.getText(), IDlbl.getText(), firstnamelbl.getText(), lastnamelbl.getText());
+            DataBase.AddUser(newstudent);
+            DataBase.AddCourse(newstudent, HomePageFa.getCurcourse());
         }
     }
 
     @FXML
     void backbtnclk(ActionEvent event) throws IOException {
-        Stage pstage = (Stage) backbtn.getScene().getWindow();
+        Stage pstage = (Stage) addbtn.getScene().getWindow();
         pstage.close();
-        FXMLLoader fxmlLoader;
-        if(Login.getCurperson() instanceof Student) {
-            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageSt.fxml"));
-        } else {
-            fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
-        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CoursePageFa.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");
@@ -49,11 +50,12 @@ public class NotifController {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void clickRefreshbtn(ActionEvent event) throws IOException {
-        Stage pstage = (Stage) refreshbtn.getScene().getWindow();
+        Stage pstage = (Stage) addbtn.getScene().getWindow();
         pstage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NotificationPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addmanualStudent.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Welcome");
@@ -62,6 +64,5 @@ public class NotifController {
         stage.setScene(scene);
         stage.show();
     }
-    
 
 }

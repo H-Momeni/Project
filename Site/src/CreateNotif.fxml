@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="434.0" prefWidth="620.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="434.0" prefWidth="620.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateNotifController">
    <children>
       <Button fx:id="btnback" layoutX="516.0" layoutY="33.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
       <Label layoutX="29.0" layoutY="27.0" prefHeight="46.0" prefWidth="267.0" text="Type your message" textFill="WHITE">
@@ -24,12 +24,12 @@
          </image>
       </ImageView>
       <Separator layoutX="29.0" layoutY="99.0" prefHeight="10.0" prefWidth="573.0" />
-      <TextArea layoutX="40.0" layoutY="183.0" prefHeight="178.0" prefWidth="550.0" promptText="type here..." />
-      <Button layoutX="277.0" layoutY="379.0" mnemonicParsing="false" text="Send" textFill="#ff0015">
+      <TextArea fx:id="textlbl" layoutX="40.0" layoutY="183.0" prefHeight="178.0" prefWidth="550.0" promptText="type here..." />
+      <Button fx:id="sendbtn" layoutX="277.0" layoutY="379.0" mnemonicParsing="false" onAction="#sendbtnclk" style="-fx-background-color: #000225;" text="Send" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <TextField alignment="TOP_CENTER" layoutX="222.0" layoutY="136.0" promptText="Subject" />
+      <TextField fx:id="titlelbl" alignment="TOP_CENTER" layoutX="222.0" layoutY="136.0" promptText="Subject" />
    </children>
 </AnchorPane>

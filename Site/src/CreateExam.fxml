@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="432.0" prefWidth="542.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="432.0" prefWidth="542.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateExamController">
    <children>
       <Button fx:id="btnback" layoutX="426.0" layoutY="25.0" mnemonicParsing="false" onAction="#clckbtnBack" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #000225;" />
       <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="443.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
@@ -25,27 +25,16 @@
          </font>
       </Label>
       <Separator layoutX="24.0" layoutY="87.0" prefHeight="4.0" prefWidth="490.0" />
-      <Button layoutX="210.0" layoutY="378.0" mnemonicParsing="false" text="Upload file">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="25.0" layoutY="108.0" text="File addres:" textFill="WHITE">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="161.0" layoutY="110.0" text="/////////" textFill="WHITE">
+      <Button fx:id="uploadbtn" layoutX="210.0" layoutY="378.0" mnemonicParsing="false" onAction="#uploadbtnclk" style="-fx-background-color: #000225;" text="Upload file" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
-      </Label>
-      <Label layoutX="24.0" layoutY="168.0" text="Test duration:" textFill="WHITE">
+      </Button>
+      <Label layoutX="24.0" layoutY="121.0" text="Test duration:" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField layoutX="179.0" layoutY="171.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
       <RadioButton layoutX="27.0" layoutY="318.0" mnemonicParsing="false" text="T/F" textFill="WHITE">
          <font>
             <Font name="System Italic" size="21.0" />
@@ -61,16 +50,22 @@
             <Font name="System Italic" size="21.0" />
          </font>
       </RadioButton>
-      <CheckBox layoutX="25.0" layoutY="258.0" mnemonicParsing="false" text="Review Option" textFill="WHITE">
+      <CheckBox fx:id="reviewbtn" layoutX="25.0" layoutY="258.0" mnemonicParsing="false" text="Review Option" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </CheckBox>
-      <TextField layoutX="179.0" layoutY="216.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
-      <Label layoutX="24.0" layoutY="213.0" text="Subject:" textFill="WHITE">
+      <TextField fx:id="titlelbl" layoutX="179.0" layoutY="187.0" opacity="0.32" prefHeight="10.0" prefWidth="149.0" />
+      <Label layoutX="24.0" layoutY="184.0" text="Subject:" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
+      <TextField fx:id="yearlbl" layoutX="165.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="43.0" promptText="year" />
+      <TextField fx:id="hourlbl" layoutX="342.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="43.0" promptText="hour" />
+      <TextField fx:id="daylbl" layoutX="288.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="37.0" promptText="day" />
+      <TextField fx:id="monthlbl" layoutX="222.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="51.0" promptText="month" />
+      <TextField fx:id="secondlbl" layoutX="475.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="58.0" promptText="second" />
+      <TextField fx:id="minutelbl" layoutX="401.0" layoutY="124.0" opacity="0.32" prefHeight="25.0" prefWidth="58.0" promptText="minute" />
    </children>
 </AnchorPane>

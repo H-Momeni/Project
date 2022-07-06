@@ -96,6 +96,15 @@ public class HomePageFa {
     private ImageView profimg;
 
     @FXML
+    private Label eventlbl1;
+
+    @FXML
+    private Label eventlbl2;
+
+    @FXML
+    private Label eventlbl3;
+
+    @FXML
     private Text time;
 
     @FXML
@@ -163,11 +172,11 @@ public class HomePageFa {
 
             }
         };
-        ///////////////////////////
-
+        
+        int lblnumber = 3;
+        first: 
         for (int i = 0; i < Login.getCurperson().courses.size(); i++) {
-            Course cur = new Course(null);
-            cur = Login.getCurperson().courses.get(i);
+            Course cur = Login.getCurperson().courses.get(i);
             for (int j = 0; j < cur.courseobjects.size(); j++) {
                 Boolean close = false;
                 Time end;
@@ -176,38 +185,83 @@ public class HomePageFa {
                         LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),
                         LocalDateTime.now().getSecond());
                 Time diff;
-                Object obj = new Object();
-                obj = cur.courseobjects.get(j);
+                CourseObject corobj = cur.courseobjects.get(j);
 
-                if (obj instanceof Exam) {
-                    Exam exam = (Exam) obj;
+                if (corobj instanceof Exam) {
+                    Exam exam = (Exam) corobj;
                     end = exam.getEndTime();
-                    diff = now.dif(now, end);
-                    if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
-                            && diff.second <= 59) {
-                        close = true;
+                    if(Time.Compare(now, end)) {
+                        diff = Time.dif(now, end);
+                        if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                                && diff.second <= 59) {
+                            close = true;
+                        }
                     }
-                }
-                if (obj instanceof Homework) {
-                    Homework home = (Homework) obj;
+                } else if (corobj instanceof Homework) {
+                    Homework home = (Homework) corobj;
                     end = home.getEndTime();
-                    diff = now.dif(now, end);
-                    if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
-                            && diff.second <= 59) {
-                        close = true;
+                    if(Time.Compare(now, end)) {
+                        diff = Time.dif(now, end);
+                        if (diff.year == 0 && diff.month == 0 && diff.day <= 13 && diff.hour <= 23 && diff.minute <= 59
+                                && diff.second <= 59) {
+                            close = true;
+                        }
                     }
                 }
 
-                if(close==true){
-                    //bere ghesmat close
+                if(close && lblnumber>0){
+                    if (lblnumber == 3) {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl1.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber--;
+                    } else if(lblnumber==2) {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl2.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber --;
+                    } else {
+                        String eventtype;
+                        String endtime;
+                        if (corobj instanceof Exam) {
+                            Exam exam = (Exam) corobj;
+                            eventtype = "Exam";
+                            endtime = Time.timetoString(exam.getEndTime());
+                        } else {
+                            Homework homework = (Homework) corobj;
+                            eventtype = "HomeWork";
+                            endtime = Time.timetoString(homework.getEndTime());
+                        }
+                        eventlbl3.setText(eventtype + "\t" + cur.getTitle() + "\n" + endtime);
+                        lblnumber --;
+                    }
+                }
+
+                if(lblnumber<1) {
+                    break first;
                 }
 
             }
         }
 
-        
-
-        //////////////////////////
         lblName.setText(Login.getCurperson().getFirstName() + " " + Login.getCurperson().getLastName());
         coursebuttons[0] = button1;
         coursebuttons[1] = button2;

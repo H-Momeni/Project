@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="338.0" prefWidth="505.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.78" prefHeight="338.0" prefWidth="505.0" style="-fx-background-color: #090956;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
    <children>
       <Button fx:id="refreshbtn" layoutX="417.0" layoutY="271.0" mnemonicParsing="false" onAction="#clickRefreshbtn" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: #000000;" />
-      <TextField layoutX="56.0" layoutY="211.0" prefHeight="39.0" prefWidth="198.0" promptText="Last Name">
+      <TextField fx:id="lastnamelbl" layoutX="56.0" layoutY="204.0" prefHeight="39.0" prefWidth="198.0" promptText="Last Name">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="371.0" layoutY="22.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #000225;" />
+      <Button fx:id="backbtn" layoutX="371.0" layoutY="22.0" mnemonicParsing="false" onAction="#backbtnclk" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #000225;" />
       <ImageView fitHeight="39.0" fitWidth="58.0" layoutX="390.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@back.jpg" />
@@ -27,18 +27,18 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <TextField layoutX="56.0" layoutY="135.0" prefHeight="39.0" prefWidth="198.0" promptText="EducationID">
+      <TextField fx:id="IDlbl" layoutX="56.0" layoutY="135.0" prefHeight="39.0" prefWidth="198.0" promptText="EducationID">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="370.0" layoutY="155.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="94.0" style="-fx-background-color: #000000;" />
+      <Button fx:id="addbtn" layoutX="370.0" layoutY="155.0" mnemonicParsing="false" onAction="#addbtnclk" prefHeight="78.0" prefWidth="94.0" style="-fx-background-color: #000000;" />
       <ImageView fitHeight="60.0" fitWidth="64.0" layoutX="387.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@usePlus.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="56.0" layoutY="275.0" prefHeight="39.0" prefWidth="198.0" promptText="First Name">
+      <TextField fx:id="firstnamelbl" layoutX="56.0" layoutY="275.0" prefHeight="39.0" prefWidth="198.0" promptText="First Name">
          <font>
             <Font size="16.0" />
          </font>
